@@ -1,0 +1,42 @@
+.sidenav {
+  width: 200px;
+}
+
+.sidenav i {
+  padding-right: 10px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.text {
+  margin-top: 2px;
+}
+
+.icon {
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.nav-list a {
+  margin-bottom: 10px;
+}
+
+.mdc-list {
+  padding: 0;
+}
+
+// alinha os icones ao texto
+::ng-deep .mdc-list-item__primary-text {
+  display: flex;
+}
+
+.nav-list-subitem {
+  margin-left: 15px;
+}
+
+.nav-list-subitem a {
+  margin-bottom: 0px;
+}

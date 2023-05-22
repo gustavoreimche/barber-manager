@@ -1,0 +1,19 @@
+<mat-toolbar class="header mat-elevation-z4">
+  <a (click)="toggleMenu()" *ngIf="isHandset$ | async">
+    <mat-icon color="warn">menu</mat-icon>
+  </a>
+  <span>
+    <a routerLink="/">
+      <img class="logo" src="" alt="logo" />
+    </a>
+  </span>
+  <span class="title-group">
+    <a routerLink="">
+      <mat-icon
+        class="icon-display"
+        fontIcon="account_circle"
+        color="warn"
+      ></mat-icon>
+    </a>
+  </span>
+</mat-toolbar>
