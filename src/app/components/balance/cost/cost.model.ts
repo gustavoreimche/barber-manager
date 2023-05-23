@@ -1,8 +1,7 @@
 export interface Cost {
   id?: string;
-  idUser?: string;
-  name: string;
-  address: string;
-  phone: string | null;
+  idCompany: string;
+  value: number;
   description: string;
+  date: Date;
 }

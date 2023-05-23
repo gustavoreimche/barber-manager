@@ -5,25 +5,29 @@
     </mat-card-header>
     <br />
     <mat-form-field appearance="fill">
-      <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="cost.name" name="name" required />
-      <mat-icon matSuffix>apartment</mat-icon>
+      <mat-label>ID</mat-label>
+      <input matInput [(ngModel)]="cost.id" name="id" required />
+      <mat-icon matSuffix>label</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Endereço</mat-label>
-      <input matInput [(ngModel)]="cost.address" name="address" required />
-      <mat-icon matSuffix>map</mat-icon>
+      <mat-label>ID da Empresa</mat-label>
+      <input matInput [(ngModel)]="cost.idCompany" name="idCompany" required />
+      <mat-icon matSuffix>business</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Telefone</mat-label>
-      <input
-        mask="(00) 00000-0000"
-        required
-        matInput
-        [(ngModel)]="cost.phone"
-        name="phone"
-      />
-      <mat-icon matSuffix>phone</mat-icon>
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" [(ngModel)]="cost.value" name="value" required />
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput [(ngModel)]="cost.description" name="description" required></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Data</mat-label>
+      <input matInput type="date" [(ngModel)]="cost.date" name="date" required />
+      <mat-icon matSuffix>event</mat-icon>
     </mat-form-field>
     <br />
     <div class="actions">
@@ -46,4 +50,3 @@
     </div>
   </mat-card>
 </form>
-

@@ -10,10 +10,11 @@ import { Cost } from '../cost.model';
 })
 export class CostDeleteComponent implements OnInit {
   cost: Cost = {
-    name: '',
-    address: '',
-    phone: null,
+    id: '',
+    idCompany: '',
+    value: 0,
     description: '',
+    date: new Date(),
   };
 
   constructor(

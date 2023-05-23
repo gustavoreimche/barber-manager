@@ -13,10 +13,10 @@ export class CostCreateComponent {
 
   cost: Cost = {
     id: '',
-    name: '',
-    address: '',
-    phone: null,
+    idCompany: '',
+    value: 0,
     description: '',
+    date: new Date(),
   };
 
   submit(): void {
