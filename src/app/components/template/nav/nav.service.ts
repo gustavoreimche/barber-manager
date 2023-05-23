@@ -15,5 +15,6 @@ export class NavService {
   toggleMenu(): void {
     this.isSidenavOpen = !this.isSidenavOpen;
     this.menuToggled.emit();
+    console.log('aa');
   }
 }
