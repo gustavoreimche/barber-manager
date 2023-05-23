@@ -5,6 +5,7 @@ import { CompanyCreateComponent } from './components/company/company-create/comp
 
 const routes: Routes = [
   {
+
     path: 'company',
     component: CompanyComponent,
   },
