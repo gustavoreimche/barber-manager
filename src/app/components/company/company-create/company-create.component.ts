@@ -18,9 +18,12 @@ export class CompanyCreateComponent {
   };
 
   submit(): void {
-    this.companyService.createCompany(this.company).subscribe((company) => {
-      console.log(company);
+    this.companyService.create(this.company).subscribe((company) => {
+      this.companyService.showMessage(
+        `Empresa: ${company.name} criada com sucesso!`
+      );
     });
+    this.router.navigate(['/company']);
   }
 
   cancel(): void {

@@ -60,8 +60,14 @@ import { CompanyComponent } from './components/company/company/company.component
 import { CompanyCreateComponent } from './components/company/company-create/company-create.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ServicesComponent } from './components/services/services/services.component';
-import { ServiceCreateComponent } from './components/services/service-create/service-create.component';
+import { CompanyReadComponent } from './components/company/company-read/company-read.component';
+import { CompanyUpdateComponent } from './components/company/company-update/company-update.component';
+import { CompanyDeleteComponent } from './components/company/company-delete/company-delete.component';
+import { ServicoComponent } from './components/servicos/servico/servico.component';
+import { ServicoCreateComponent } from './components/servicos/servico-create/servico-create.component';
+import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
+import { ServicoDeleteComponent } from './components/servicos/servico-delete/servico-delete.component';
+import { ServicoReadComponent } from './components/servicos/servico-read/servico-read.component';
 
 @NgModule({
   declarations: [
@@ -71,8 +77,14 @@ import { ServiceCreateComponent } from './components/services/service-create/ser
     NavComponent,
     CompanyComponent,
     CompanyCreateComponent,
-    ServicesComponent,
-    ServiceCreateComponent,
+    CompanyReadComponent,
+    CompanyUpdateComponent,
+    CompanyDeleteComponent,
+    ServicoComponent,
+    ServicoCreateComponent,
+    ServicoUpdateComponent,
+    ServicoDeleteComponent,
+    ServicoReadComponent,
   ],
   imports: [
     BrowserModule,

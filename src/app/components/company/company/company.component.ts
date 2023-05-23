@@ -11,7 +11,7 @@ export class CompanyComponent implements OnInit {
   constructor(private router: Router, private companyService: CompanyService) {}
 
   ngOnInit(): void {
-    this.companyService.loadCompanys().subscribe((companys) => {
+    this.companyService.load().subscribe((companys) => {
       console.log(companys);
     });
   }
