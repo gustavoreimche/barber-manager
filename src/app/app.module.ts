@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxMaskModule } from 'ngx-mask';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { FormsModule } from '@angular/forms';
 
 //Angular Material Components
 import { MatInputModule } from '@angular/material/input';
@@ -54,14 +56,24 @@ import { MatTreeModule } from '@angular/material/tree';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { NavService } from './components/template/nav/nav.service';
+import { CompanyComponent } from './components/company/company/company.component';
+import { CompanyCreateComponent } from './components/company/company-create/company-create.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavComponent,
+    CompanyComponent,
+    CompanyCreateComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
     A11yModule,
     BidiModule,
     ObserversModule,
@@ -71,6 +83,9 @@ import { NavService } from './components/template/nav/nav.service';
     CdkStepperModule,
     CdkTableModule,
     CdkTreeModule,
+    NgxMaskModule.forRoot(),
+    FormsModule,
+    HttpClientModule,
 
     // Material
     MatAutocompleteModule,

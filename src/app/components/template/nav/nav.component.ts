@@ -10,6 +10,7 @@ import { NavService } from './nav.service';
 export class NavComponent {
   isSidenavOpen: boolean;
   isSubitemOpen: boolean = false;
+  isMobile: boolean = false;
 
   constructor(
     private navService: NavService,
@@ -31,8 +32,15 @@ export class NavComponent {
       this.isSidenavOpen = !this.isSidenavOpen;
     });
   }
-
+  ngOnInit(): void {
+    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
+      this.isMobile = result.matches;
+    });
+  }
   toggleSubitem(): void {
     this.isSubitemOpen = !this.isSubitemOpen;
+  }
+  closeNavSide(): void {
+    this.isSidenavOpen = false;
   }
 }
