@@ -12,8 +12,8 @@ export class ServicoReadComponent {
   servicos: Servico[] = [];
   isMobile = false;
 
-  displayedColumns = ['name', 'address', 'phone', 'action'];
-  displayedColumnsMobile = ['name', 'action'];
+  displayedColumns = ['name', 'description', 'price', 'action'];
+  displayedColumnsMobile = ['name', 'price', 'action'];
 
   constructor(
     private servicoService: ServicoService,
