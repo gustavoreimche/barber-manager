@@ -68,6 +68,11 @@ import { ServicoCreateComponent } from './components/servicos/servico-create/ser
 import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
 import { ServicoDeleteComponent } from './components/servicos/servico-delete/servico-delete.component';
 import { ServicoReadComponent } from './components/servicos/servico-read/servico-read.component';
+import { CostComponent } from './components/balance/cost/cost/cost.component';
+import { EntryComponent } from './components/balance/entry/entry/entry.component';
+import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
+import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -85,6 +90,10 @@ import { ServicoReadComponent } from './components/servicos/servico-read/servico
     ServicoUpdateComponent,
     ServicoDeleteComponent,
     ServicoReadComponent,
+    CostComponent,
+    EntryComponent,
+    CostReadComponent,
+    CostCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +111,7 @@ import { ServicoReadComponent } from './components/servicos/servico-read/servico
     NgxMaskModule.forRoot(),
     FormsModule,
     HttpClientModule,
-
+    MatNativeDateModule,
     // Material
     MatAutocompleteModule,
     MatBadgeModule,
