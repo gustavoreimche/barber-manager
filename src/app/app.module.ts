@@ -68,8 +68,7 @@ import { ServicoCreateComponent } from './components/servicos/servico-create/ser
 import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
 import { ServicoDeleteComponent } from './components/servicos/servico-delete/servico-delete.component';
 import { ServicoReadComponent } from './components/servicos/servico-read/servico-read.component';
-import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
-import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
+
 import { MatNativeDateModule } from '@angular/material/core';
 import { ClientComponent } from './components/client/client-home/client.component';
 import { ClientReadComponent } from './components/client/client-read/client-read.component';
@@ -78,7 +77,11 @@ import { ClientUpdateComponent } from './components/client/client-update/client-
 import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
 import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
-import { BalanceHomeComponent } from './components/balance/balance-home/balance-home.component';
+import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
+import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
+import { CostComponent } from './components/balance/cost/cost/cost.component';
+
+
 
 @NgModule({
   declarations: [
@@ -100,12 +103,14 @@ import { BalanceHomeComponent } from './components/balance/balance-home/balance-
     CostCreateComponent,
     CostDeleteComponent,
     CostUpdateComponent,
+    CostComponent,
     ClientComponent,
     ClientReadComponent,
     ClientCreateComponent,
     ClientUpdateComponent,
     ClientDeleteComponent,
-    BalanceHomeComponent,
+
+
   ],
   imports: [
     BrowserModule,
