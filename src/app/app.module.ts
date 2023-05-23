@@ -60,6 +60,8 @@ import { CompanyComponent } from './components/company/company/company.component
 import { CompanyCreateComponent } from './components/company/company-create/company-create.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ServicesComponent } from './components/services/services/services.component';
+import { ServiceCreateComponent } from './components/services/service-create/service-create.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavComponent,
     CompanyComponent,
     CompanyCreateComponent,
+    ServicesComponent,
+    ServiceCreateComponent,
   ],
   imports: [
     BrowserModule,
