@@ -80,8 +80,7 @@ import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
 import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
 import { CostComponent } from './components/balance/cost/cost/cost.component';
-
-
+import { BalanceComponent } from './components/balance/balance-home/balance.component';
 
 @NgModule({
   declarations: [
@@ -109,8 +108,7 @@ import { CostComponent } from './components/balance/cost/cost/cost.component';
     ClientCreateComponent,
     ClientUpdateComponent,
     ClientDeleteComponent,
-
-
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,

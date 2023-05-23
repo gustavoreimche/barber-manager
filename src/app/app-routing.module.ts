@@ -14,6 +14,7 @@ import { CostCreateComponent } from './components/balance/cost/cost-create/cost-
 import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
 import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
+import { BalanceComponent } from './components/balance/balance-home/balance.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'service/delete/:id',
     component: ServicoDeleteComponent,
+  },
+  {
+    path: 'balance',
+    component: BalanceComponent,
   },
   {
     path: 'cost',

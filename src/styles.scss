@@ -43,6 +43,18 @@ body {
   flex-direction: row-reverse;
 }
 
+.edit {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #939393;
+}
+
+.delete > i {
+  color: #939393;
+}
+
 @media screen and (max-width: 600px) {
   .button-cadastro {
     margin-left: 0px;
