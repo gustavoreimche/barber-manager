@@ -78,6 +78,9 @@ import { ClientReadComponent } from './components/client/client-read/client-read
 import { ClientCreateComponent } from './components/client/client-create/client-create.component';
 import { ClientUpdateComponent } from './components/client/client-update/client-update.component';
 import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
+import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
+import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
+
 
 @NgModule({
   declarations: [
@@ -99,6 +102,8 @@ import { ClientDeleteComponent } from './components/client/client-delete/client-
     EntryComponent,
     CostReadComponent,
     CostCreateComponent,
+    CostDeleteComponent,
+    CostUpdateComponent,
     ClientComponent,
     ClientReadComponent,
     ClientCreateComponent,
