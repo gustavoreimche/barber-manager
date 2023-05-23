@@ -12,8 +12,8 @@ export class CostReadComponent implements OnInit {
   costs: Cost[] = [];
   isMobile = false;
 
-  displayedColumns = ['id', 'idCompany', 'value', 'description', 'date', 'action'];
-  displayedColumnsMobile = ['id', 'idCompany', 'value', 'description', 'date', 'action'];
+  displayedColumns = ['id', 'value', 'description', 'date', 'action'];
+  displayedColumnsMobile = ['id', 'value', 'description', 'date', 'action'];
 
   constructor(
     private costService: CostService,

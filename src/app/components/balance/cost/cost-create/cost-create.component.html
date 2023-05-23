@@ -2,26 +2,34 @@
   <h2>Create Cost</h2>
   <form (ngSubmit)="submit()">
     <div>
-      <label>ID:</label>
-      <input type="text" [(ngModel)]="cost.id" name="id" required>
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput [(ngModel)]="cost.id" name="id" required>
+      </mat-form-field>
     </div>
+
     <div>
-      <label>ID Company:</label>
-      <input type="text" [(ngModel)]="cost.idCompany" name="idCompany" required>
+      <mat-form-field>
+        <mat-label>Value</mat-label>
+        <input matInput type="number" [(ngModel)]="cost.value" name="value" required>
+      </mat-form-field>
     </div>
+
     <div>
-      <label>Value:</label>
-      <input type="number" [(ngModel)]="cost.value" name="value" required>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput type="text" [(ngModel)]="cost.description" name="description" required>
+      </mat-form-field>
     </div>
+
     <div>
-      <label>Description:</label>
-      <input type="text" [(ngModel)]="cost.description" name="description" required>
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput type="date" [(ngModel)]="cost.date" name="date" required>
+      </mat-form-field>
     </div>
-    <div>
-      <label>Date:</label>
-      <input type="date" [(ngModel)]="cost.date" name="date" required>
-    </div>
-    <button type="submit">Create</button>
-    <button type="button" (click)="cancel()">Cancel</button>
+
+    <button mat-raised-button color="primary" type="submit">Create</button>
+    <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
   </form>
 </div>
