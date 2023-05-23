@@ -1,0 +1,48 @@
+<form>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Exclusão de Custo</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="cost.name" name="name" disabled />
+      <mat-icon matSuffix>apartment</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Endereço</mat-label>
+      <input matInput [(ngModel)]="cost.address" name="address" disabled />
+      <mat-icon matSuffix>map</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input
+        mask="(00) 00000-0000"
+        disabled
+        matInput
+        [(ngModel)]="cost.phone"
+        name="phone"
+      />
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <br />
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="warn"
+        class="button-cadastro"
+        (click)="delete()"
+      >
+        EXCLUIR
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="cancel()"
+        class="button-cancel"
+      >
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
+</form>

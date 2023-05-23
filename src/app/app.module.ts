@@ -73,6 +73,8 @@ import { EntryComponent } from './components/balance/entry/entry/entry.component
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
 import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
+import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +96,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     EntryComponent,
     CostReadComponent,
     CostCreateComponent,
+    CostDeleteComponent,
+    CostUpdateComponent,
   ],
   imports: [
     BrowserModule,
