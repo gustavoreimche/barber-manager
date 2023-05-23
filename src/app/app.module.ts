@@ -73,6 +73,11 @@ import { EntryComponent } from './components/balance/entry/entry/entry.component
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
 import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ClientComponent } from './components/client/client-home/client.component';
+import { ClientReadComponent } from './components/client/client-read/client-read.component';
+import { ClientCreateComponent } from './components/client/client-create/client-create.component';
+import { ClientUpdateComponent } from './components/client/client-update/client-update.component';
+import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +99,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     EntryComponent,
     CostReadComponent,
     CostCreateComponent,
+    ClientComponent,
+    ClientReadComponent,
+    ClientCreateComponent,
+    ClientUpdateComponent,
+    ClientDeleteComponent,
   ],
   imports: [
     BrowserModule,
