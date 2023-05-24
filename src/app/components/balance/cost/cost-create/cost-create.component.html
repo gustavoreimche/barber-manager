@@ -1,35 +1,66 @@
-<div>
-  <h2>Create Cost</h2>
-  <form (ngSubmit)="submit()">
-    <div>
-      <mat-form-field>
-        <mat-label>ID</mat-label>
-        <input matInput [(ngModel)]="cost.id" name="id" required>
-      </mat-form-field>
-    </div>
+<form (ngSubmit)="submit()">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Cadastro de Despesa</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="cost.description"
+        name="description"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Valor</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="cost.value"
+        name="value"
+        required
+      />
+    </mat-form-field>
 
-    <div>
-      <mat-form-field>
-        <mat-label>Value</mat-label>
-        <input matInput type="number" [(ngModel)]="cost.value" name="value" required>
-      </mat-form-field>
-    </div>
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required
+        [(ngModel)]="cost.date"
+        name="date"
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-    <div>
-      <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput type="text" [(ngModel)]="cost.description" name="description" required>
-      </mat-form-field>
+    <br />
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="accent"
+        class="button-cadastro"
+        type="submit"
+      >
+        CADASTRAR
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        class="button-canel"
+        type="button"
+        (click)="cancel()"
+      >
+        CANCELAR
+      </button>
     </div>
-
-    <div>
-      <mat-form-field>
-        <mat-label>Date</mat-label>
-        <input matInput type="date" [(ngModel)]="cost.date" name="date" required>
-      </mat-form-field>
-    </div>
-
-    <button mat-raised-button color="primary" type="submit">Create</button>
-    <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
-  </form>
-</div>
+  </mat-card>
+</form>

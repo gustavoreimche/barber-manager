@@ -18,7 +18,7 @@ export class CompanyUpdateComponent {
   company: Company = {
     name: '',
     address: '',
-    phone: null,
+    phone: '',
   };
 
   ngOnInit(): void {

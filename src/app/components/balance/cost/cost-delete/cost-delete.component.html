@@ -5,32 +5,53 @@
     </mat-card-header>
     <br />
     <mat-form-field appearance="fill">
-      <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="cost.id" name="id" disabled />
-      <mat-icon matSuffix>apartment</mat-icon>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        [(ngModel)]="cost.description"
+        name="description"
+        disabled
+      />
+      <mat-icon matSuffix>description</mat-icon>
     </mat-form-field>
-
     <mat-form-field appearance="fill">
       <mat-label>Valor</mat-label>
       <input matInput [(ngModel)]="cost.value" name="value" disabled />
       <mat-icon matSuffix>attach_money</mat-icon>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Descrição</mat-label>
-      <textarea matInput [(ngModel)]="cost.description" name="description" disabled></textarea>
-      <mat-icon matSuffix>description</mat-icon>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
+
+    <mat-form-field>
       <mat-label>Data</mat-label>
-      <input matInput [(ngModel)]="cost.date" name="date" disabled />
-      <mat-icon matSuffix>date_range</mat-icon>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required
+        [(ngModel)]="cost.date"
+        name="date"
+        disabled
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <br />
     <div class="actions">
-      <button mat-raised-button color="warn" class="button-cadastro" (click)="delete()">
+      <button
+        mat-raised-button
+        color="warn"
+        class="button-cadastro"
+        (click)="delete()"
+      >
         EXCLUIR
       </button>
-      <button mat-raised-button color="accent" (click)="cancel()" class="button-cancel">
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="cancel()"
+        class="button-cancel"
+      >
         CANCELAR
       </button>
     </div>

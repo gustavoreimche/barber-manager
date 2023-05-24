@@ -86,7 +86,12 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
 import { EmployeeReadComponent } from './components/employee/employee-read/employee-read.component';
 import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { LOCALE_ID } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,6 +127,7 @@ import { EmployeeUpdateComponent } from './components/employee/employee-update/e
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     A11yModule,
@@ -173,7 +179,7 @@ import { EmployeeUpdateComponent } from './components/employee/employee-update/e
     MatTooltipModule,
     MatTreeModule,
   ],
-  providers: [NavService],
+  providers: [NavService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

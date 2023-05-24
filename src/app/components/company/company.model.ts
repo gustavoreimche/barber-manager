@@ -3,5 +3,5 @@ export interface Company {
   idUser?: string;
   name: string;
   address: string;
-  phone: string | null;
+  phone: string;
 }
