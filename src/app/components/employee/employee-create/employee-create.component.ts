@@ -26,10 +26,8 @@ export class EmployeeCreateComponent {
   };
 
   submit(): void {
-    this.employee.phone = this.employeeService.formatPhoneNumber(
-      this.employee.phone
-    );
-    this.employeeService.create(this.employee).subscribe((employee) => {
+      this.employee.password = this.employee.email
+      this.employeeService.create(this.employee).subscribe((employee) => {
       this.employeeService.showMessage(
         `Funcionário: ${employee.name} criado com sucesso!`
       );
