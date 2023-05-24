@@ -72,6 +72,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 
 registerLocaleData(localePt);
@@ -104,6 +105,7 @@ registerLocaleData(localePt);
     EmployeeDeleteComponent,
     EmployeeReadComponent,
     EmployeeUpdateComponent,
+    LoginComponent,
     CompanyFormComponent,
   ],
   imports: [
