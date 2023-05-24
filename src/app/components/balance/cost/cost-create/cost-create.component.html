@@ -27,7 +27,13 @@
 
     <mat-form-field>
       <mat-label>Data</mat-label>
-      <input matInput [matDatepicker]="picker" required />
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required
+        [(ngModel)]="cost.date"
+        name="date"
+      />
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle
         matIconSuffix
