@@ -1,43 +1,41 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee } from '../employee.model';
-import { EmployeeService } from '../employee.service'; 
+import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-employee-delete',
   templateUrl: './employee-delete.component.html',
-  styleUrls: ['./employee-delete.component.scss']
+  styleUrls: ['./employee-delete.component.scss'],
 })
 export class EmployeeDeleteComponent {
   constructor(
     private router: Router,
-    private employeeService: EmployeeService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) {}
 
-  employee: Employee = {
+  user: User = {
     name: '',
     email: '',
     phone: '',
     password: '',
     admin: false,
     employee: false,
-    companys: '',
+    companys: [],
   };
-  
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.employeeService.getById(id as string).subscribe((employee) => {
-      this.employee = employee;
+    this.userService.getById(id as string).subscribe((employee) => {
+      this.user = employee;
     });
   }
 
   delete(): void {
-    this.employeeService
-      .delete(this.employee.id as string)
-      .subscribe((employee) => {
-        this.employeeService.showMessage('Empresa excluida!');
-      });
+    this.userService.delete(this.user.id as string).subscribe((employee) => {
+      this.userService.showMessage('Empresa excluida!');
+    });
     this.router.navigate(['/employee']);
   }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../company.model';
 import { CompanyService } from '../company.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ReloadService } from '../reload.service';
+import { ReloadService } from '../../../services/reload.service';
 
 @Component({
   selector: 'app-company-read',

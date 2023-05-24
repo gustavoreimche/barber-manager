@@ -16,11 +16,18 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
 import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuardLogin } from './guards/auth-login.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    component: CompanyComponent,
+    canActivate: [AuthGuardLogin],
+  },
+  {
     path: 'company',
     component: CompanyComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'service',

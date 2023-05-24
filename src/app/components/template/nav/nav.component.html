@@ -3,7 +3,7 @@
   <mat-sidenav
     #desktopSidenav
     class="desktop-sidenav"
-    *ngIf="!isMobile"
+    *ngIf="!isMobile && isLogged"
     mode="side"
     [opened]="isSidenavOpen"
     fixedInViewport="true"
@@ -53,7 +53,7 @@
   <mat-sidenav
     #desktopSidenav
     class="desktop-sidenav"
-    *ngIf="isMobile"
+    *ngIf="isMobile && isLogged"
     mode="over"
     [opened]="isSidenavOpen"
     fixedInViewport="true"

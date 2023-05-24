@@ -1,28 +1,26 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { Employee } from '../employee.model';
-import { EmployeeService } from '../employee.service';
-
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../models/user.model';
 @Component({
   selector: 'app-employee-read',
   templateUrl: './employee-read.component.html',
-  styleUrls: ['./employee-read.component.scss']
+  styleUrls: ['./employee-read.component.scss'],
 })
 export class EmployeeReadComponent {
-
-  employees: Employee[] = [];
+  employees: User[] = [];
   isMobile = false;
 
   displayedColumns = ['name', 'email', 'phone', 'action'];
   displayedColumnsMobile = ['name', 'action'];
 
   constructor(
-    private employeeService: EmployeeService,
+    private userService: UserService,
     private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
-    this.employeeService.load().subscribe((compays) => {
+    this.userService.load().subscribe((compays) => {
       this.employees = compays;
     });
     this.breakpointObserver
@@ -31,7 +29,7 @@ export class EmployeeReadComponent {
         this.isMobile = result.matches;
       });
   }
-  
+
   formatPhoneNumber(phone: string): string {
     const phoneNumber = phone || '';
     return phoneNumber.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');

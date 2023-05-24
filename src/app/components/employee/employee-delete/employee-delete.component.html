@@ -7,13 +7,13 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="employee.name" name="name" disabled />
+      <input matInput [(ngModel)]="user.name" name="name" disabled />
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="employee.email" name="email" disabled />
+      <input matInput [(ngModel)]="user.email" name="email" disabled />
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
 
@@ -23,7 +23,7 @@
         mask="(00) 00000-0000"
         disabled
         matInput
-        [(ngModel)]="employee.phone"
+        [(ngModel)]="user.phone"
         name="phone"
       />
       <mat-icon matSuffix>phone</mat-icon>

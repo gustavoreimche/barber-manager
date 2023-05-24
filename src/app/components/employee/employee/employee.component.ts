@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmployeeService } from '../employee.service';
-
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent implements OnInit {
-  constructor(private router: Router, private employeeService: EmployeeService) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.employeeService.load().subscribe((employees) => {
-      console.log(employees);
+    this.userService.load().subscribe((users) => {
+      console.log(users);
     });
   }
   navigateToEmployeeCreate(): void {
     this.router.navigate(['/employee/create']);
   }
-  
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employee } from '../employee.model';
-import { EmployeeService } from '../employee.service';
+import { User } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-employee-update',
@@ -11,33 +11,33 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeUpdateComponent {
   constructor(
     private router: Router,
-    private employeeService: EmployeeService,
+    private userService: UserService,
     private route: ActivatedRoute
   ) {}
 
-  employee: Employee = {
+  user: User = {
     name: '',
     email: '',
     phone: '',
     password: '',
     admin: false,
     employee: false,
-    companys: '',
+    companys: [],
   };
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.employeeService.getById(id as string).subscribe((employee) => {
-      this.employee = employee;
+    this.userService.getById(id as string).subscribe((employee) => {
+      this.user = employee;
     });
   }
 
   submit(): void {
-    this.employee.phone = this.employeeService.formatPhoneNumber(
-      this.employee.phone
+    this.user.phone = this.userService.formatPhoneNumber(
+      this.user.phone as string
     );
-    this.employeeService.update(this.employee).subscribe((employee) => {
-      this.employeeService.showMessage(
+    this.userService.update(this.user).subscribe((employee) => {
+      this.userService.showMessage(
         `Empresa: ${employee.name} alterada com sucesso!`
       );
     });

@@ -7,7 +7,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="employee.name" name="name" required />
+      <input matInput [(ngModel)]="user.name" name="name" required />
       <mat-icon matSuffix>person</mat-icon>
     </mat-form-field>
 
@@ -16,7 +16,7 @@
       <input
         matInput
         type="email"
-        [(ngModel)]="employee.email"
+        [(ngModel)]="user.email"
         name="email"
         required
         [formControl]="emailControl"
@@ -37,7 +37,7 @@
         mask="(00) 00000-0000"
         required
         matInput
-        [(ngModel)]="employee.phone"
+        [(ngModel)]="user.phone"
         name="phone"
       />
       <mat-icon matSuffix>phone</mat-icon>
@@ -46,7 +46,7 @@
 
     <mat-form-field>
       <mat-label>Funcionário</mat-label>
-      <mat-select [(ngModel)]="employee.employee" name="employee">
+      <mat-select [(ngModel)]="user.employee" name="employee">
         <mat-option value="true">Sim</mat-option>
         <mat-option value="false">Não</mat-option>
       </mat-select>
@@ -54,7 +54,7 @@
 
     <mat-form-field>
       <mat-label>Administrador</mat-label>
-      <mat-select [(ngModel)]="employee.admin" name="admin">
+      <mat-select [(ngModel)]="user.admin" name="admin">
         <mat-option value="true">Sim</mat-option>
         <mat-option value="false">Não</mat-option>
       </mat-select>

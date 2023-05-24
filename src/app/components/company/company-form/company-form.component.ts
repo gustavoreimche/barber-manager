@@ -3,7 +3,7 @@ import { FormControl, NgForm } from '@angular/forms';
 import { Company } from '../company.model';
 import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
-import { ReloadService } from '../reload.service';
+import { ReloadService } from '../../../services/reload.service';
 
 @Component({
   selector: 'app-company-form',

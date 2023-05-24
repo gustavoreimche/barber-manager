@@ -11,19 +11,23 @@ import { Address } from './address.model';
 })
 export class CompanyService {
   url = api.url + 'companys';
+
   address: Address = {
     logradouro: '',
     bairro: '',
     cep: '',
     numero: null,
   };
+
   isEdit = false;
   isDelete = false;
+
   company: Company = {
     name: '',
     address: '',
     phone: '',
   };
+
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
   showMessage(msg: string): void {
