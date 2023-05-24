@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
     <app-nav></app-nav>
   `,
 })
-export class AppComponent {
-  title = 'barber-manager';
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    localStorage.setItem('isAdmin', 'true');
+  }
 }

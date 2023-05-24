@@ -1,16 +1,24 @@
-<form>
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <mat-card-title>EMPRESA</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<form ngNoForm>
   <mat-card class="card">
-    <mat-card-header>
-      <mat-card-title>Cadastro de Empresa</mat-card-title>
-    </mat-card-header>
-    <br />
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput [(ngModel)]="company.name" name="name" required />
+      <input
+        matInput
+        [(ngModel)]="company.name"
+        name="name"
+        required
+        [disabled]="this.companyService.isDelete"
+      />
       <mat-icon matSuffix>apartment</mat-icon>
     </mat-form-field>
-    <div class="address">
-      <mat-form-field appearance="fill">
+    <div class="address" *ngIf="!this.companyService.isEdit">
+      <mat-form-field appearance="fill" class="cep">
         <mat-label>CEP</mat-label>
         <input matInput [formControl]="cepControl" mask="00000-000" />
         <mat-icon matSuffix>map</mat-icon>
@@ -27,7 +35,7 @@
       </mat-form-field>
     </div>
 
-    <div class="address">
+    <div class="address" *ngIf="!this.companyService.isEdit">
       <mat-form-field class="numero">
         <mat-label>Numero</mat-label>
         <input matInput [(ngModel)]="numero" name="numero" required />
@@ -43,6 +51,20 @@
         />
       </mat-form-field>
     </div>
+    <mat-form-field
+      appearance="fill"
+      *ngIf="this.companyService.isEdit || this.companyService.isDelete"
+    >
+      <mat-label>Endereço</mat-label>
+      <input
+        matInput
+        [(ngModel)]="company.address"
+        name="address"
+        required
+        [disabled]="this.companyService.isDelete"
+      />
+      <mat-icon matSuffix>map</mat-icon>
+    </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Telefone</mat-label>
       <input
@@ -51,6 +73,7 @@
         matInput
         [(ngModel)]="company.phone"
         name="phone"
+        [disabled]="this.companyService.isDelete"
       />
       <mat-icon matSuffix>phone</mat-icon>
       <mat-hint>Incluir código de área</mat-hint>
@@ -59,15 +82,15 @@
     <div class="actions">
       <button
         mat-raised-button
-        color="accent"
+        color="{{ this.companyService.isDelete ? 'warn' : 'accent' }}"
         class="button-cadastro"
         (click)="this.submit()"
       >
-        CADASTRAR EMPRESA
+        {{ this.companyService.isDelete ? "EXCLUIR" : "SALVAR" }}
       </button>
       <button
         mat-raised-button
-        color="warn"
+        color="{{ this.companyService.isDelete ? 'accent' : 'warn' }}"
         (click)="this.cancel()"
         class="button-cancel"
       >

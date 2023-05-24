@@ -17,7 +17,13 @@ export class CompanyService {
     cep: '',
     numero: null,
   };
-
+  isEdit = false;
+  isDelete = false;
+  company: Company = {
+    name: '',
+    address: '',
+    phone: '',
+  };
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
   showMessage(msg: string): void {
@@ -27,6 +33,8 @@ export class CompanyService {
       verticalPosition: 'top',
     });
   }
+
+  //
 
   load(): Observable<Company[]> {
     return this.http.get<Company[]>(this.url);

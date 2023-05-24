@@ -42,12 +42,9 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { NavService } from './components/template/nav/nav.service';
 import { CompanyComponent } from './components/company/company/company.component';
-import { CompanyCreateComponent } from './components/company/company-create/company-create.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyReadComponent } from './components/company/company-read/company-read.component';
-import { CompanyUpdateComponent } from './components/company/company-update/company-update.component';
-import { CompanyDeleteComponent } from './components/company/company-delete/company-delete.component';
 import { ServicoComponent } from './components/servicos/servico/servico.component';
 import { ServicoCreateComponent } from './components/servicos/servico-create/servico-create.component';
 import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
@@ -76,6 +73,7 @@ import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -85,10 +83,7 @@ registerLocaleData(localePt);
     FooterComponent,
     NavComponent,
     CompanyComponent,
-    CompanyCreateComponent,
     CompanyReadComponent,
-    CompanyUpdateComponent,
-    CompanyDeleteComponent,
     ServicoComponent,
     ServicoCreateComponent,
     ServicoUpdateComponent,
@@ -111,6 +106,7 @@ registerLocaleData(localePt);
     EmployeeReadComponent,
     EmployeeUpdateComponent,
     LoginComponent,
+    CompanyFormComponent,
   ],
   imports: [
     BrowserModule,
