@@ -81,7 +81,12 @@ import { CostReadComponent } from './components/balance/cost/cost-read/cost-read
 import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
 import { CostComponent } from './components/balance/cost/cost/cost.component';
 import { BalanceComponent } from './components/balance/balance-home/balance.component';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { LOCALE_ID } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,6 +117,7 @@ import { BalanceComponent } from './components/balance/balance-home/balance.comp
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     A11yModule,
@@ -163,7 +169,7 @@ import { BalanceComponent } from './components/balance/balance-home/balance.comp
     MatTooltipModule,
     MatTreeModule,
   ],
-  providers: [NavService],
+  providers: [NavService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

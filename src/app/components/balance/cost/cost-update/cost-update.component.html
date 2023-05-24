@@ -1,45 +1,63 @@
-<form>
+<form (ngSubmit)="submit()">
   <mat-card class="card">
     <mat-card-header>
-      <mat-card-title>Atualização de Custo</mat-card-title>
+      <mat-card-title>Atualização de Despesa</mat-card-title>
     </mat-card-header>
     <br />
-    <mat-form-field appearance="fill">
-      <mat-label>ID</mat-label>
-      <input matInput [(ngModel)]="cost.id" name="id" required />
-      <mat-icon matSuffix>label</mat-icon>
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="cost.description"
+        name="description"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Valor</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="cost.value"
+        name="value"
+        required
+      />
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Valor</mat-label>
-      <input matInput type="number" [(ngModel)]="cost.value" name="value" required />
-      <mat-icon matSuffix>attach_money</mat-icon>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Descrição</mat-label>
-      <textarea matInput [(ngModel)]="cost.description" name="description" required></textarea>
-      <mat-icon matSuffix>description</mat-icon>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <mat-label>Data</mat-label>
-      <input matInput type="date" [(ngModel)]="cost.date" name="date" required />
-      <mat-icon matSuffix>event</mat-icon>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required
+        [(ngModel)]="cost.date"
+        name="date"
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
+
     <br />
     <div class="actions">
       <button
         mat-raised-button
         color="accent"
         class="button-cadastro"
-        (click)="submit()"
+        type="submit"
       >
         ATUALIZAR
       </button>
       <button
         mat-raised-button
         color="warn"
+        class="button-canel"
+        type="button"
         (click)="cancel()"
-        class="button-cancel"
       >
         CANCELAR
       </button>

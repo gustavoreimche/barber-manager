@@ -14,7 +14,13 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Valor</mat-label>
-      <input matInput [(ngModel)]="servico.price" name="price" required />
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="servico.price"
+        name="price"
+        required
+      />
     </mat-form-field>
     <br />
     <div class="actions">
