@@ -75,6 +75,7 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -109,6 +110,7 @@ registerLocaleData(localePt);
     EmployeeDeleteComponent,
     EmployeeReadComponent,
     EmployeeUpdateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

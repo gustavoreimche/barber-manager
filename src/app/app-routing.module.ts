@@ -18,6 +18,7 @@ import { EmployeeComponent } from './components/employee/employee/employee.compo
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
 import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
   {
     path: 'employee/delete/:id',
     component: EmployeeDeleteComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 
