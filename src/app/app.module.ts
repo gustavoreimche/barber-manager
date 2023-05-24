@@ -81,6 +81,11 @@ import { CostReadComponent } from './components/balance/cost/cost-read/cost-read
 import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
 import { CostComponent } from './components/balance/cost/cost/cost.component';
 import { BalanceComponent } from './components/balance/balance-home/balance.component';
+import { EmployeeComponent } from './components/employee/employee/employee.component';
+import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
+import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
+import { EmployeeReadComponent } from './components/employee/employee-read/employee-read.component';
+import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
@@ -114,6 +119,11 @@ registerLocaleData(localePt);
     ClientUpdateComponent,
     ClientDeleteComponent,
     BalanceComponent,
+    EmployeeComponent,
+    EmployeeCreateComponent,
+    EmployeeDeleteComponent,
+    EmployeeReadComponent,
+    EmployeeUpdateComponent,
   ],
   imports: [
     BrowserModule,

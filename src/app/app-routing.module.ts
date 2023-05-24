@@ -15,6 +15,11 @@ import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-
 import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
 import { BalanceComponent } from './components/balance/balance-home/balance.component';
+import { EmployeeComponent } from './components/employee/employee/employee.component';
+import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
+import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
+import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
+import { EmployeeReadComponent } from './components/employee/employee-read/employee-read.component';
 
 const routes: Routes = [
   {
@@ -72,6 +77,26 @@ const routes: Routes = [
   {
     path: 'cost/read/:id',
     component: CostReadComponent,
+  },
+  {
+    path: 'employee',
+    component: EmployeeComponent,
+  },
+  {
+    path: 'employee/create',
+    component: EmployeeCreateComponent,
+  },
+  {
+    path: 'employee/update/:id',
+    component: EmployeeUpdateComponent,
+  },
+  {
+    path: 'employee/delete/:id',
+    component: EmployeeDeleteComponent,
+  },
+  {
+    path: 'employee/read/:id',
+    component: EmployeeReadComponent,
   },
 ];
 
