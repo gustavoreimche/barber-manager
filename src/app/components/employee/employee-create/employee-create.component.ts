@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../employee.model';
 import { EmployeeService } from '../employee.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-create',
@@ -25,9 +26,14 @@ export class EmployeeCreateComponent {
     companys: '',
   };
 
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+
   submit(): void {
-      this.employee.password = this.employee.email
-      this.employeeService.create(this.employee).subscribe((employee) => {
+    this.employee.password = this.employee.email;
+    this.employee.phone = this.employeeService.formatPhoneNumber(
+      this.employee.phone
+    );
+    this.employeeService.create(this.employee).subscribe((employee) => {
       this.employeeService.showMessage(
         `Funcionário: ${employee.name} criado com sucesso!`
       );

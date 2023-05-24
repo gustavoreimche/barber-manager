@@ -8,6 +8,7 @@ export class NavService {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   menuToggled: EventEmitter<void> = new EventEmitter<void>();
+
   isSidenavOpen: boolean = !this.breakpointObserver.isMatched(
     Breakpoints.Handset
   );
