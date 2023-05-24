@@ -40,4 +40,8 @@ export class EmployeeService {
   delete(id: string): Observable<Employee> {
     return this.http.delete<Employee>(`${this.url}/${id}`);
   }
+
+  formatPhoneNumber(phone: string): string {
+    return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
+  }
 }

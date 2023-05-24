@@ -1,5 +1,5 @@
 <form>
-<mat-card class="card">
+  <mat-card class="card">
     <mat-card-header>
       <mat-card-title>Cadastro de Funcionário</mat-card-title>
     </mat-card-header>
@@ -13,14 +13,14 @@
 
     <mat-form-field>
       <mat-label>Email</mat-label>
-      <input matInput [(ngModel)]="employee.email" name="email" required>
+      <input matInput [(ngModel)]="employee.email" name="email" required />
       <mat-icon matSuffix>mail</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Telefone</mat-label>
       <input
-        mask="(00) 00000-0000"
+        mask="00-00000-0000"
         required
         matInput
         [(ngModel)]="employee.phone"
@@ -45,24 +45,24 @@
         <mat-option value="false">Não</mat-option>
       </mat-select>
     </mat-form-field>
-    <br>
+    <br />
     <div class="actions">
-        <button
-          mat-raised-button
-          color="accent"
-          class="button-cadastro"
-          (click)="this.submit()"
-        >
-          ATUALIZAR
-        </button>
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="this.cancel()"
-          class="button-cancel"
-        >
-          CANCELAR
-        </button>
-      </div>
-    </mat-card>
+      <button
+        mat-raised-button
+        color="accent"
+        class="button-cadastro"
+        (click)="this.submit()"
+      >
+        ATUALIZAR
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="this.cancel()"
+        class="button-cancel"
+      >
+        CANCELAR
+      </button>
+    </div>
+  </mat-card>
 </form>
