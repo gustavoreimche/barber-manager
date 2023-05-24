@@ -52,4 +52,8 @@ export class CompanyService {
     const url = `https://viacep.com.br/ws/${cep}/json/`;
     return this.http.get<Address>(url);
   }
+
+  formatPhoneNumber(phone: string): string {
+    return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
+  }
 }
