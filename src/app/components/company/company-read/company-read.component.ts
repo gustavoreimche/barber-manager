@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../company.model';
 import { CompanyService } from '../company.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-company-read',
@@ -17,7 +18,8 @@ export class CompanyReadComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private reloadService: ReloadService
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,25 @@ export class CompanyReadComponent implements OnInit {
 
   formatPhoneNumber(phone: string): string {
     return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
+  }
+
+  //quando clicar no edit vai chamar o service e epgar company pelo id
+  edit(id: string): void {
+    this.companyService.isDelete = false;
+    this.companyService.isEdit = true;
+    this.companyService.getById(id).subscribe((company) => {
+      console.log(id);
+      this.companyService.company = company;
+      this.reloadService.reloadParent();
+    });
+  }
+  delete(id: string): void {
+    this.companyService.isEdit = true;
+    this.companyService.isDelete = true;
+    this.companyService.getById(id).subscribe((company) => {
+      console.log(id);
+      this.companyService.company = company;
+      this.reloadService.reloadParent();
+    });
   }
 }

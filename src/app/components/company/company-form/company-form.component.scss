@@ -1,0 +1,33 @@
+.address {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rua {
+  margin-left: 20px;
+  flex: 2;
+}
+
+.cep {
+  flex: 1;
+}
+
+.numero {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.bairro {
+  flex: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .address {
+    flex-direction: column;
+  }
+  .rua,
+  .numero {
+    margin: 0;
+  }
+}
