@@ -11,6 +11,7 @@ export class NavComponent {
   isSidenavOpen: boolean;
   isSubitemOpen: boolean = false;
   isMobile: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     private navService: NavService,
@@ -36,6 +37,7 @@ export class NavComponent {
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
       this.isMobile = result.matches;
     });
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
   }
   toggleSubitem(): void {
     this.isSubitemOpen = !this.isSubitemOpen;

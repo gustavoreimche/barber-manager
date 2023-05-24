@@ -15,15 +15,15 @@
         <i class="material-icons">home</i>
         <span class="text">INICIO</span>
       </a>
-      <a mat-list-item routerLink="/company">
+      <a mat-list-item routerLink="/company" *ngIf="isAdmin">
         <i class="material-icons">account_balance</i>
         <span class="text">EMPRESAS</span>
       </a>
-      <a mat-list-item routerLink="/employee">
+      <a mat-list-item routerLink="/employee" *ngIf="isAdmin">
         <i class="material-icons">manage_accounts</i>
         <span class="text">FUNCIONÁRIOS</span>
       </a>
-      <a mat-list-item routerLink="/service">
+      <a mat-list-item routerLink="/service" *ngIf="isAdmin">
         <i class="material-icons">settings</i>
         <span class="text">SERVIÇOS</span>
       </a>
@@ -31,7 +31,7 @@
         <i class="material-icons">people</i>
         <span class="text">CLIENTES</span>
       </a>
-      <a mat-list-item routerLink="/balance">
+      <a mat-list-item routerLink="/balance" *ngIf="isAdmin">
         <i class="material-icons">paid</i>
         <span class="text">BALANÇO</span>
       </a>
@@ -41,9 +41,9 @@
       </a>
       <mat-nav-list class="nav-list-subitem" *ngIf="this.isSubitemOpen">
         <a mat-list-item routerLink="/">Cliente</a>
-        <a mat-list-item routerLink="/">Funcionário</a>
-        <a mat-list-item routerLink="/">Serviço</a>
-        <a mat-list-item routerLink="/">Completo</a>
+        <a mat-list-item routerLink="/" *ngIf="isAdmin">Funcionário</a>
+        <a mat-list-item routerLink="/" *ngIf="isAdmin">Serviço</a>
+        <a mat-list-item routerLink="/" *ngIf="isAdmin">Completo</a>
         <!-- Adicione mais subitens conforme necessário -->
       </mat-nav-list>
     </mat-nav-list>
@@ -65,15 +65,30 @@
         <i class="material-icons">home</i>
         <span class="text">INICIO</span>
       </a>
-      <a mat-list-item routerLink="/company" (click)="this.closeNavSide()">
+      <a
+        mat-list-item
+        routerLink="/company"
+        (click)="this.closeNavSide()"
+        *ngIf="isAdmin"
+      >
         <i class="material-icons">account_balance</i>
         <span class="text">EMPRESAS</span>
       </a>
-      <a mat-list-item routerLink="/employee" (click)="this.closeNavSide()">
+      <a
+        mat-list-item
+        routerLink="/employee"
+        (click)="this.closeNavSide()"
+        *ngIf="isAdmin"
+      >
         <i class="material-icons">manage_accounts</i>
         <span class="text">FUNCIONÁRIOS</span>
       </a>
-      <a mat-list-item routerLink="/service" (click)="this.closeNavSide()">
+      <a
+        mat-list-item
+        routerLink="/service"
+        (click)="this.closeNavSide()"
+        *ngIf="isAdmin"
+      >
         <i class="material-icons">settings</i>
         <span class="text">SERVIÇOS</span>
       </a>
@@ -81,7 +96,12 @@
         <i class="material-icons">people</i>
         <span class="text">CLIENTES</span>
       </a>
-      <a mat-list-item routerLink="/balance" (click)="this.closeNavSide()">
+      <a
+        mat-list-item
+        routerLink="/balance"
+        (click)="this.closeNavSide()"
+        *ngIf="isAdmin"
+      >
         <i class="material-icons">paid</i>
         <span class="text">BALANÇO</span>
       </a>
@@ -93,13 +113,25 @@
         <a mat-list-item routerLink="/" (click)="this.closeNavSide()"
           >Cliente</a
         >
-        <a mat-list-item routerLink="/" (click)="this.closeNavSide()"
+        <a
+          mat-list-item
+          routerLink="/"
+          (click)="this.closeNavSide()"
+          *ngIf="isAdmin"
           >Funcionário</a
         >
-        <a mat-list-item routerLink="/" (click)="this.closeNavSide()"
+        <a
+          mat-list-item
+          routerLink="/"
+          (click)="this.closeNavSide()"
+          *ngIf="isAdmin"
           >Serviço</a
         >
-        <a mat-list-item routerLink="/" (click)="this.closeNavSide()"
+        <a
+          mat-list-item
+          routerLink="/"
+          (click)="this.closeNavSide()"
+          *ngIf="isAdmin"
           >Completo</a
         >
         <!-- Adicione mais subitens conforme necessário -->
