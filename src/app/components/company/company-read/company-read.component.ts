@@ -32,7 +32,6 @@ export class CompanyReadComponent implements OnInit {
   }
 
   formatPhoneNumber(phone: string): string {
-    const phoneNumber = phone || '';
-    return phoneNumber.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
   }
 }
