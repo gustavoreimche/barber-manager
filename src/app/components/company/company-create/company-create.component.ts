@@ -39,7 +39,9 @@ export class CompanyCreateComponent {
   submit(): void {
     this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}`;
     console.log(this.company.address);
-    this.formatPhoneNumber();
+    this.company.phone = this.companyService.formatPhoneNumber(
+      this.company.phone
+    );
     this.companyService.create(this.company).subscribe((company) => {
       this.companyService.showMessage(
         `Empresa: ${company.name} criada com sucesso!`
@@ -50,12 +52,5 @@ export class CompanyCreateComponent {
 
   cancel(): void {
     this.router.navigate(['/company']);
-  }
-
-  formatPhoneNumber(): void {
-    this.company.phone = `${this.company.phone.slice(
-      0,
-      2
-    )}-${this.company.phone.slice(2, 7)}-${this.company.phone.slice(7)}`;
   }
 }
