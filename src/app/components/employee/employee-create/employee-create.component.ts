@@ -16,7 +16,6 @@ export class EmployeeCreateComponent {
     name: '',
     email: '',
     phone: '',
-    password: '',
     admin: false,
     employee: false,
     companys: '',
