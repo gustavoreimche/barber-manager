@@ -3,6 +3,7 @@ export interface Employee {
   name: string;
   email: string;
   phone: string | null;
+  password: string;
   admin: boolean;
   employee: boolean;
   companys: string;

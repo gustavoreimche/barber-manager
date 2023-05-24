@@ -16,12 +16,14 @@ export class EmployeeCreateComponent {
     name: '',
     email: '',
     phone: '',
+    password: '',
     admin: false,
     employee: false,
     companys: '',
   };
 
   submit(): void {
+    this.employee.password = this.employee.email
     this.employeeService.create(this.employee).subscribe((employee) => {
       this.employeeService.showMessage(
         `Funcionário: ${employee.name} criado com sucesso!`

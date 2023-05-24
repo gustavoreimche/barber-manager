@@ -19,6 +19,7 @@ export class EmployeeDeleteComponent {
     name: '',
     email: '',
     phone: '',
+    password: '',
     admin: false,
     employee: false,
     companys: '',
