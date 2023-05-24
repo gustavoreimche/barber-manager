@@ -6,11 +6,14 @@ import { EmployeeService } from '../employee.service';
 @Component({
   selector: 'app-employee-create',
   templateUrl: './employee-create.component.html',
-  styleUrls: ['./employee-create.component.scss']
+  styleUrls: ['./employee-create.component.scss'],
 })
 export class EmployeeCreateComponent {
   hide = false;
-  constructor(private router: Router, private employeeService: EmployeeService) {}
+  constructor(
+    private router: Router,
+    private employeeService: EmployeeService
+  ) {}
 
   employee: Employee = {
     name: '',
@@ -23,7 +26,6 @@ export class EmployeeCreateComponent {
   };
 
   submit(): void {
-    this.employee.password = this.employee.email
     this.employeeService.create(this.employee).subscribe((employee) => {
       this.employeeService.showMessage(
         `Funcionário: ${employee.name} criado com sucesso!`
