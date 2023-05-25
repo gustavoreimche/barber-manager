@@ -48,7 +48,7 @@ export class NavComponent {
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe((result) => {
       this.isMobile = result.matches;
     });
-    this.isAdmin = !!localStorage.getItem('isAdmin');
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
     this.isLogged = !!localStorage.getItem('token');
 
     this.companyService

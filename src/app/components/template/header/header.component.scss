@@ -16,6 +16,15 @@
   text-align: none;
   text-decoration: none;
   color: #fff;
+  flex: 1;
+}
+
+.center {
+  justify-content: center;
+}
+
+span {
+  flex: 1;
 }
 
 .header .logo {
@@ -25,7 +34,7 @@
 .header .title-group {
   display: flex;
   align-items: center;
-  padding-left: 30px;
+  justify-content: flex-end;
 }
 
 .header .title-group i {
