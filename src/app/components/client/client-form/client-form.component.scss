@@ -3,12 +3,14 @@
   flex-direction: row;
 }
 
-.pg {
-  flex: 0.6;
+.pg,
+.num {
+  flex: 0.5;
   margin-right: 20px;
 }
-.num {
-  flex: 0.6;
+.squad {
+  flex: 0.5;
+  margin-left: 20px;
 }
 .name {
   flex: 2;
@@ -45,5 +47,10 @@
   .rua,
   .numero {
     margin: 0;
+  }
+  .pg,
+  .num,
+  .squad {
+    margin-right: 0;
   }
 }

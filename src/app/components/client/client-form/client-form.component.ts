@@ -70,6 +70,7 @@ export class ClientFormComponent {
     //       this.companyService.showMessage('Empresa excluida!');
     //     });
     // }
+    console.log(this.client);
   }
 
   cancel(): void {

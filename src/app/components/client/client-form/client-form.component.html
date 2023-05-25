@@ -4,19 +4,21 @@
       <!-- CAMPO POSTO E GRADUAÇÃO -->
       <mat-form-field *ngIf="this.clientService.isMilitary" class="pg">
         <mat-label>P/G</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="client.pg" name="pg">
           <mat-option
-            [(ngModel)]="client.pg"
-            name="name"
             [disabled]="this.clientService.isDelete"
             *ngFor="let pg of this.clientService.pg"
-            value="option"
+            value="{{ pg }}"
             >{{ pg }}</mat-option
           >
         </mat-select>
       </mat-form-field>
       <!-- CAMPO NUMERO -->
-      <mat-form-field appearance="fill" *ngIf="this.clientService.isMilitary" class="num">
+      <mat-form-field
+        appearance="fill"
+        *ngIf="this.clientService.isMilitary"
+        class="num"
+      >
         <mat-label>Nº</mat-label>
         <input
           matInput
@@ -25,7 +27,6 @@
           name="num"
           [disabled]="this.clientService.isDelete"
         />
-        <mat-icon matSuffix>apartment</mat-icon>
       </mat-form-field>
       <!-- CAMPO NOME -->
       <mat-form-field appearance="fill" class="name">
@@ -37,7 +38,17 @@
           required
           [disabled]="this.clientService.isDelete"
         />
-        <mat-icon matSuffix>apartment</mat-icon>
+      </mat-form-field>
+      <mat-form-field *ngIf="this.clientService.isMilitary" class="squad">
+        <mat-label>Esqd</mat-label>
+        <mat-select [(ngModel)]="client.squad" name="squad">
+          <mat-option
+            [disabled]="this.clientService.isDelete"
+            *ngFor="let squad of this.clientService.squad"
+            value="{{ squad }}"
+            >{{ squad }}</mat-option
+          >
+        </mat-select>
       </mat-form-field>
     </div>
     <div class="row" *ngIf="!this.clientService.isEdit">
