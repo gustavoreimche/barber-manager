@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
     this.userService
       .login(this.user.email, this.user.password)
       .subscribe((data) => {
-        console.log(data.length);
-        if (data.length > 0) {
+        if (data[0].id) {
           localStorage.setItem('token', 'eadsef32');
+          localStorage.setItem('idUser', data[0].id as string);
           this.reloadNavService.update();
           this.router.navigateByUrl('/');
         }

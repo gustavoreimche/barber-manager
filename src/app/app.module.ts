@@ -42,6 +42,7 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { NavComponent } from './components/template/nav/nav.component';
 import { NavService } from './components/template/nav/nav.service';
 import { CompanyComponent } from './components/company/company/company.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyReadComponent } from './components/company/company-read/company-read.component';
@@ -54,9 +55,6 @@ import { ServicoReadComponent } from './components/servicos/servico-read/servico
 import { MatNativeDateModule } from '@angular/material/core';
 import { ClientComponent } from './components/client/client-home/client.component';
 import { ClientReadComponent } from './components/client/client-read/client-read.component';
-import { ClientCreateComponent } from './components/client/client-create/client-create.component';
-import { ClientUpdateComponent } from './components/client/client-update/client-update.component';
-import { ClientDeleteComponent } from './components/client/client-delete/client-delete.component';
 import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
 import { CostReadComponent } from './components/balance/cost/cost-read/cost-read.component';
@@ -74,6 +72,8 @@ import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
+import { ClientFormComponent } from './components/client/client-form/client-form.component';
+import { HomeComponent } from './components/home/home/home.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -96,9 +96,6 @@ registerLocaleData(localePt);
     CostComponent,
     ClientComponent,
     ClientReadComponent,
-    ClientCreateComponent,
-    ClientUpdateComponent,
-    ClientDeleteComponent,
     BalanceComponent,
     EmployeeComponent,
     EmployeeCreateComponent,
@@ -107,6 +104,8 @@ registerLocaleData(localePt);
     EmployeeUpdateComponent,
     LoginComponent,
     CompanyFormComponent,
+    ClientFormComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +127,7 @@ registerLocaleData(localePt);
     MatNativeDateModule,
     // Material
     MatBadgeModule,
+    MatMenuModule,
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,

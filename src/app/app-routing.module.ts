@@ -17,16 +17,23 @@ import { EmployeeUpdateComponent } from './components/employee/employee-update/e
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardLogin } from './guards/auth-login.guard';
+import { ClientComponent } from './components/client/client-home/client.component';
+import { HomeComponent } from './components/home/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: CompanyComponent,
+    component: HomeComponent,
     canActivate: [AuthGuardLogin],
   },
   {
     path: 'company',
     component: CompanyComponent,
+    canActivate: [AuthGuardLogin],
+  },
+  {
+    path: 'client',
+    component: ClientComponent,
     canActivate: [AuthGuardLogin],
   },
   {

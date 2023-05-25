@@ -22,7 +22,7 @@ export class EmployeeDeleteComponent {
     password: '',
     admin: false,
     employee: false,
-    companys: [],
+    idCompanys: [],
   };
 
   ngOnInit(): void {

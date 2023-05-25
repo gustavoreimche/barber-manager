@@ -8,12 +8,37 @@
     </a>
   </span>
   <span class="title-group">
-    <a routerLink="/login" style="cursor: pointer">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
       <mat-icon
         class="icon-display"
         fontIcon="account_circle"
         color="warn"
       ></mat-icon>
-    </a>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        *ngFor="let company of companys"
+        (click)="this.switchCompany(company.id !== undefined ? company.id : '')"
+      >
+        <mat-icon>apartment</mat-icon>
+        <span>{{ company.name }}</span>
+      </button>
+      <button mat-menu-item (click)="this.sair()">
+        <mat-icon>logout</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
+    <!-- <a routerLink="/login" style="cursor: pointer">
+      <mat-icon
+        class="icon-display"
+        fontIcon="account_circle"
+        color="warn"
+      ></mat-icon>
+    </a> -->
   </span>
 </mat-toolbar>

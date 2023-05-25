@@ -1,6 +1,6 @@
 export interface User {
   id?: string;
-  companys?: Array<string>;
+  idCompanys?: Array<string>;
   name?: string;
   email: string;
   password: string;

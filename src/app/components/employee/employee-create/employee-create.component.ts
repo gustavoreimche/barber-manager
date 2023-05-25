@@ -20,7 +20,7 @@ export class EmployeeCreateComponent {
     password: '',
     admin: false,
     employee: false,
-    companys: [],
+    idCompanys: [],
   };
 
   emailControl = new FormControl('', [Validators.required, Validators.email]);

@@ -20,9 +20,11 @@ export class EmployeeReadComponent {
   ) {}
 
   ngOnInit(): void {
-    this.userService.load().subscribe((compays) => {
-      this.employees = compays;
-    });
+    this.userService
+      .getByIdCompany(localStorage.getItem('idCompany') as string)
+      .subscribe((compays) => {
+        this.employees = compays;
+      });
     this.breakpointObserver
       .observe([Breakpoints.Handset])
       .subscribe((result) => {

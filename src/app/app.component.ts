@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {
-    localStorage.setItem('isAdmin', 'false');
-    // localStorage.setItem('token', 'sdasd333');
+    localStorage.setItem('isAdmin', 'true');
+    // localStorage.setItem('idCompany', 'pCKbltP');
   }
 }

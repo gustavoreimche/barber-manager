@@ -27,7 +27,7 @@
         <i class="material-icons">settings</i>
         <span class="text">SERVIÇOS</span>
       </a>
-      <a mat-list-item routerLink="/">
+      <a mat-list-item routerLink="/client">
         <i class="material-icons">people</i>
         <span class="text">CLIENTES</span>
       </a>
@@ -92,7 +92,7 @@
         <i class="material-icons">settings</i>
         <span class="text">SERVIÇOS</span>
       </a>
-      <a mat-list-item routerLink="/" (click)="this.closeNavSide()">
+      <a mat-list-item routerLink="/client" (click)="this.closeNavSide()">
         <i class="material-icons">people</i>
         <span class="text">CLIENTES</span>
       </a>
@@ -139,6 +139,11 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
+    <mat-card class="card">
+      <mat-card-header class="card-header">
+        <mat-card-title>Empresa atual: {{ company.name }}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

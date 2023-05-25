@@ -22,7 +22,7 @@ export class EmployeeUpdateComponent {
     password: '',
     admin: false,
     employee: false,
-    companys: [],
+    idCompanys: [],
   };
 
   ngOnInit(): void {

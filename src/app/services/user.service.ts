@@ -25,6 +25,10 @@ export class UserService {
     return this.http.get<User[]>(this.url);
   }
 
+  getByIdCompany(idCompanys: string): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}?idCompanys_like=${idCompanys}`);
+  }
+
   create(employee: User): Observable<User> {
     return this.http.post<User>(this.url, employee);
   }
