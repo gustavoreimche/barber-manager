@@ -4,6 +4,7 @@ import { Company } from '../company.model';
 import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
 import { ReloadService } from '../../../services/reload.service';
+import { CepService } from 'src/app/services/cep.service';
 
 @Component({
   selector: 'app-company-form',
@@ -13,6 +14,7 @@ import { ReloadService } from '../../../services/reload.service';
 export class CompanyFormComponent {
   constructor(
     private router: Router,
+    public cepService: CepService,
     public companyService: CompanyService,
     private reloadService: ReloadService
   ) {}
@@ -21,7 +23,7 @@ export class CompanyFormComponent {
     this.cepControl.valueChanges.subscribe((cep) => {
       if (cep && cep.length === 8) {
         // Verifica se o CEP possui 8 dígitos
-        this.companyService.getAddressByCEP(cep).subscribe((data) => {
+        this.cepService.getAddressByCEP(cep).subscribe((data) => {
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
           this.cep = data.cep;

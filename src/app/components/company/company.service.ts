@@ -4,7 +4,7 @@ import { Company } from './company.model';
 import { HttpClient } from '@angular/common/http';
 import { api } from 'src/api';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Address } from './address.model';
+import { Address } from '../../models/address.model';
 
 @Injectable({
   providedIn: 'root',
@@ -58,11 +58,6 @@ export class CompanyService {
 
   delete(id: string): Observable<Company> {
     return this.http.delete<Company>(`${this.url}/${id}`);
-  }
-
-  getAddressByCEP(cep: string): Observable<Address> {
-    const url = `https://viacep.com.br/ws/${cep}/json/`;
-    return this.http.get<Address>(url);
   }
 
   formatPhoneNumber(phone: string): string {

@@ -1,0 +1,49 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.pg {
+  flex: 0.6;
+  margin-right: 20px;
+}
+.num {
+  flex: 0.6;
+}
+.name {
+  flex: 2;
+}
+
+.rua {
+  margin-left: 20px;
+  flex: 2;
+}
+
+.cep {
+  flex: 1;
+}
+.cep {
+  flex: 1;
+}
+.cep {
+  flex: 1;
+}
+
+.numero {
+  margin-right: 20px;
+  flex: 1;
+}
+
+.bairro {
+  flex: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .rua,
+  .numero {
+    margin: 0;
+  }
+}

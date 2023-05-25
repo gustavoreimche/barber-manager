@@ -1,4 +1,4 @@
-export interface Company {
+export interface Client {
   id?: string;
   idCompany?: string;
   name: string;
@@ -7,5 +7,5 @@ export interface Company {
   debit?: number | null;
   num?: number | null;
   pg?: string;
-  esqd?: string;
+  squad?: string;
 }
