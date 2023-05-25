@@ -1,1 +1,10 @@
-<p>home works!</p>
+<div class="container">
+  <h2>Empresas do Usuário</h2>
+  <ul>
+    <li *ngFor="let company of companies">
+      <button mat-button (click)="this.switchCompany(company.id !== undefined ? company.id : '')">
+        {{ company.name }}
+      </button>
+    </li>
+  </ul>
+</div>
