@@ -57,4 +57,9 @@ export class UserService {
   formatPhoneNumber(phone: string): string {
     return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
   }
+
+  getCompaniesByIds(companyIds: string[]): Observable<User[]> {
+    const params = companyIds.map(id => `idCompanys_like=${id}`).join('&');
+    return this.http.get<User[]>(`${this.url}?${params}`);
+  }
 }
