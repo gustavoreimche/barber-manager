@@ -7,10 +7,15 @@ import { ServicoService } from '../../servicos/servico.service';
   templateUrl: './balance.component.html',
   styleUrls: ['./balance.component.scss']
 })
+
 export class BalanceComponent implements OnInit {
+  selectedMonth: string;
+  months: string[] = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   servicos: Servico[] = [];
 
-  constructor(private servicoService: ServicoService) { }
+  constructor(private servicoService: ServicoService) { 
+    this.selectedMonth = this.months[0]; 
+  }
 
   ngOnInit(): void {
     this.getServicos();
