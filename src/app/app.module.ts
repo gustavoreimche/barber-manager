@@ -74,6 +74,11 @@ import { LoginComponent } from './components/login/login.component';
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 import { ClientFormComponent } from './components/client/client-form/client-form.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { EntryComponent } from './components/entry/entry/entry.component';
+import { EntryCreateComponent } from './components/balance/entry/entry-create/entry-create.component';
+import { EntryDeleteComponent } from './components/balance/entry/entry-delete/entry-delete.component';
+import { EntryReadComponent } from './components/balance/entry/entry-read/entry-read.component';
+import { EntryUpdateComponent } from './components/balance/entry/entry-update/entry-update.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -106,6 +111,11 @@ registerLocaleData(localePt);
     CompanyFormComponent,
     ClientFormComponent,
     HomeComponent,
+    EntryComponent,
+    EntryCreateComponent,
+    EntryDeleteComponent,
+    EntryReadComponent,
+    EntryUpdateComponent,
   ],
   imports: [
     BrowserModule,
