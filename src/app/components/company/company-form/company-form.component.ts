@@ -24,6 +24,7 @@ export class CompanyFormComponent {
       if (cep && cep.length === 8) {
         // Verifica se o CEP possui 8 dígitos
         this.cepService.getAddressByCEP(cep).subscribe((data) => {
+          console.log(data);
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
           this.cep = data.cep;
@@ -84,6 +85,7 @@ export class CompanyFormComponent {
 
   cancel(): void {
     this.cep = '';
+    this.cepControl = new FormControl();
     this.logradouro = '';
     this.bairro = '';
     this.numero = 0;

@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -114,6 +115,7 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     A11yModule,
     BidiModule,
+    MatDividerModule,
     ObserversModule,
     OverlayModule,
     PlatformModule,

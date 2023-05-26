@@ -29,9 +29,19 @@ export class HeaderComponent {
     this.reloadNavService.update$.subscribe(() => {
       this.updateUser();
     });
+    this.companyService
+      .getById(localStorage.getItem('idCompany') as string)
+      .subscribe((company) => {
+        this.company = company;
+        console.log(company);
+      });
   }
-
   companys: Company[] = [];
+  company: Company = {
+    name: '',
+    address: '',
+    phone: '',
+  };
 
   updateUser() {
     const idUser = localStorage.getItem('idUser');
@@ -44,6 +54,11 @@ export class HeaderComponent {
       });
     });
     this.companys.sort();
+    this.companyService
+      .getById(localStorage.getItem('idCompany') as string)
+      .subscribe((company) => {
+        this.company = company;
+      });
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver

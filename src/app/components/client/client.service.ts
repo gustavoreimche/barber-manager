@@ -25,7 +25,7 @@ export class ClientService {
   isDelete = false;
   isMilitary = true;
 
-  squad = ['1º Esqd', '2º Esqd', '3º Esqd', 'Esqd C Ap'];
+  squad = ['1º Esqd', '2º Esqd', '3º Esqd', 'Esqd C Ap', 'EM'];
   pg = [
     'Cel',
     'TC',

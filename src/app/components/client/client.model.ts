@@ -2,7 +2,7 @@ export interface Client {
   id?: string;
   idCompany?: string;
   name: string;
-  phone: string | null;
+  phone?: string | null;
   address?: string;
   debit?: number | null;
   num?: number | null;

@@ -60,12 +60,11 @@
     fixedTopGap="64"
     fixedBottomGap="40"
   >
-
-      <mat-nav-list class="nav-list">
-        <a mat-list-item routerLink="/" (click)="this.closeNavSide()">
-          <i class="material-icons">home</i>
-          <span class="text">INÍCIO</span>
-        </a>
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/" (click)="this.closeNavSide()">
+        <i class="material-icons">home</i>
+        <span class="text">INÍCIO</span>
+      </a>
       <a
         mat-list-item
         routerLink="/company"
@@ -140,11 +139,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
-    <mat-card class="card">
-      <mat-card-header class="card-header">
-        <mat-card-title>Empresa atual: {{ company.name }}</mat-card-title>
-      </mat-card-header>
-    </mat-card>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
