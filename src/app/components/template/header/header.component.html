@@ -4,7 +4,13 @@
   </a>
   <span>
     <a routerLink="/" [ngClass]="{ center: isHandset$ | async }">
-      <img class="logo" src="./assets/logo.png" alt="logo" />
+      <img
+        class="logo"
+        src="./assets/logo.png"
+        alt="logo"
+        style="margin-right: 15px"
+      />
+      {{ this.company.name }}
     </a>
   </span>
   <span class="title-group">

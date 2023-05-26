@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ReloadNavService } from 'src/app/services/reloadNav.service';
 import { CompanyService } from '../../company/company.service';
 import { Company } from '../../company/company.model';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,9 +30,19 @@ export class HeaderComponent {
     this.reloadNavService.update$.subscribe(() => {
       this.updateUser();
     });
+    this.companyService
+      .getById(localStorage.getItem('idCompany') as string)
+      .subscribe((company) => {
+        this.company = company;
+        console.log(company);
+      });
   }
-
   companys: Company[] = [];
+  company: Company = {
+    name: '',
+    address: '',
+    phone: '',
+  };
 
   updateUser() {
     const idUser = localStorage.getItem('idUser');
@@ -44,6 +55,11 @@ export class HeaderComponent {
       });
     });
     this.companys.sort();
+    this.companyService
+      .getById(localStorage.getItem('idCompany') as string)
+      .subscribe((company) => {
+        this.company = company;
+      });
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -57,8 +73,9 @@ export class HeaderComponent {
   switchCompany(id: string): void {
     console.log(id);
     localStorage.setItem('idCompany', id);
-    this.reloadNavService.update();
-    this.router.navigate(['/']);
+    // this.reloadNavService.update();
+    location.reload();
+    // this.router.navigate([this.location.path()]);
   }
 
   sair(): void {
