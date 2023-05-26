@@ -1,1 +1,25 @@
+<div class="row">
+  <mat-card class="table-card">
+    <mat-card-content>
+      <h2>Entradas</h2>
+      <p>{{ getTotalEntradas() | currency }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="table-card">
+    <mat-card-content>
+      <h2>Despesas</h2>
+      <p>{{ getTotalDespesas() | currency }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="table-card">
+    <mat-card-content>
+      <h2>Total</h2>
+      <p>{{ getTotal() | currency }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
 <app-cost></app-cost>
