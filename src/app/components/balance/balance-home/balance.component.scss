@@ -20,3 +20,28 @@
   justify-content: space-between;
 }
 
+.icon {
+  font-size: 25px; /* Aumente o valor do font-size para tornar o ícone mais visível */
+  margin-bottom: 10px;
+}
+
+
+.green-icon {
+  color: rgb(1, 244, 1);
+}
+
+.red-icon {
+  color: red;
+}
+
+.expense-value {
+  color: red;
+}
+
+.green-value {
+  color: rgb(1, 244, 1);
+}
+.total-title {
+  color: white;
+}
+
