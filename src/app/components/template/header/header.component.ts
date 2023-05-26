@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ReloadNavService } from 'src/app/services/reloadNav.service';
 import { CompanyService } from '../../company/company.service';
 import { Company } from '../../company/company.model';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -72,8 +73,9 @@ export class HeaderComponent {
   switchCompany(id: string): void {
     console.log(id);
     localStorage.setItem('idCompany', id);
-    this.reloadNavService.update();
-    this.router.navigate(['/']);
+    // this.reloadNavService.update();
+    location.reload();
+    // this.router.navigate([this.location.path()]);
   }
 
   sair(): void {
