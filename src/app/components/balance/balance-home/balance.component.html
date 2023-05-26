@@ -1,1 +1,7 @@
-<app-cost></app-cost>
+<mat-form-field>
+    <mat-label>Mês</mat-label>
+    <mat-select [(ngModel)]="selectedMonth">
+      <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
