@@ -1,20 +1,12 @@
 .row {
   display: flex;
-<<<<<<< HEAD
   justify-content: center;
-=======
-  justify-content: flex-start;
->>>>>>> 987c767e6db5cb874ee50454804349b60925003a
   margin: 10px;
   flex-wrap: wrap;
 }
 
 .table-card {
-<<<<<<< HEAD
   flex: 0 0 calc(33.33% - 10px);
-=======
-  flex: 0 0 10%;
->>>>>>> 987c767e6db5cb874ee50454804349b60925003a
   height: 4.8rem;
   border-radius: 5px;
   margin-bottom: 1rem;
@@ -24,15 +16,10 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-<<<<<<< HEAD
-=======
-  align-self: auto;
->>>>>>> 987c767e6db5cb874ee50454804349b60925003a
   transition: box-shadow 0.3s;
   background-color: #474747;
   border: none;
   cursor: pointer;
-<<<<<<< HEAD
 
   .align-elements {
     display: flex;
@@ -103,105 +90,5 @@
   &.total-title {
     color: white;
   }
-=======
 }
 
-.table-card:hover {
-  background-color: #111111;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.table-card:focus {
-  outline: none;
-}
-
-.align-elements {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-value-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.text-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 0.5rem;
-}
-
-.icon {
-  font-size: 35px;
-  width: 35px;
-  height: 35px;
-  align-self: center;
-}
-
-.green-icon {
-  color: rgb(1, 244, 1);
-}
-
-.green-value {
-  color: rgb(1, 244, 1);
-}
-
-.red-icon {
-  color: rgb(255, 44, 44);
-  align-self: auto;
-}
-
-.expense-value {
-  color: rgb(255, 44, 44);
-  align-self: auto;
-}
-
-.total-title {
-  color: white;
-}
-
-h2 {
-  margin-top: 0;
-  align-self: auto;
-  color: white;
-}
-
-.changeMonthContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.selected-month {
-  padding: 1rem;
-}
-
-::ng-deep .mat-select-arrow-wrapper {
-  display: none;
-}
-
-.button-card {
-  flex: 0 0 10%;
-  height: 4.8rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  margin-right: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  align-self: auto;
-  transition: box-shadow 0.3s;
-  background-color: #ccc;
-  border: none;
-  cursor: pointer;
-}
-
-.button-card:hover {
-  background-color: #999;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
->>>>>>> 987c767e6db5cb874ee50454804349b60925003a
-}
