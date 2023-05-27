@@ -17,6 +17,20 @@ export class BalanceComponent implements OnInit {
     this.selectedMonth = this.months[0]; 
   }
 
+  changeMonth(offset: number) {
+    const currentIndex = this.months.indexOf(this.selectedMonth);
+    const newIndex = currentIndex + offset;
+    if (newIndex >= 0 && newIndex < this.months.length) {
+      this.selectedMonth = this.months[newIndex];
+    }
+  }
+
+  showMonthSelect: boolean = false;
+
+toggleMonthSelect() {
+  this.showMonthSelect = !this.showMonthSelect;
+}
+
   ngOnInit(): void {
     this.getServicos();
   }

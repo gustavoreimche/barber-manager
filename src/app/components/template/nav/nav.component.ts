@@ -26,7 +26,7 @@ export class NavComponent {
     private navService: NavService,
     private breakpointObserver: BreakpointObserver,
     private reloadNavService: ReloadNavService,
-    private companyService: CompanyService
+    private companyService: CompanyService,
   ) {
     this.isSidenavOpen = !this.breakpointObserver.isMatched(
       Breakpoints.Handset
@@ -67,6 +67,8 @@ export class NavComponent {
         });
     });
   }
+
+
 
   toggleSubitem(): void {
     this.isSubitemOpen = !this.isSubitemOpen;

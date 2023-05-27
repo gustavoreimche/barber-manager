@@ -5,28 +5,39 @@
 }
 
 .table-card {
-  width: calc(33.33% - 20px);
+  width: 25%;
+  height: 4rem;
   border-radius: 5px;
-  padding: 20px;
+  margin-bottom: 1rem;
 }
 
-.title {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.values {
+.align-elements{
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
+}
+.table-card,
+.icon,
+ h2,
+ .green-icon,
+.green-value,
+.red-icon,
+.expense-value,
+.total-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .icon {
   font-size: 25px; /* Aumente o valor do font-size para tornar o ícone mais visível */
-  margin-bottom: 10px;
 }
 
+ .green-icon {
+  color: rgb(1, 244, 1);
+}
 
-.green-icon {
+.green-value {
   color: rgb(1, 244, 1);
 }
 
@@ -38,10 +49,21 @@
   color: red;
 }
 
-.green-value {
-  color: rgb(1, 244, 1);
-}
 .total-title {
   color: white;
 }
 
+// Seletor de mes
+
+.changeMonthContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected-month {
+  padding: 1rem;
+}
+
+::ng-deep .mat-select-arrow-wrapper {
+  display: none;
+}
