@@ -28,8 +28,8 @@ i {
 
 // Efeito item selecionado Navbar
 
-.mat-list-item:hover {
-  background-color: #f0f0f0; 
+.mat-list-item.activated {
+  background-color: #e0e0e0; 
 }
 
 // alinha os icones ao texto
