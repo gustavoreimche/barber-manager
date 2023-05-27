@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -74,6 +75,11 @@ import { LoginComponent } from './components/login/login.component';
 import { CompanyFormComponent } from './components/company/company-form/company-form.component';
 import { ClientFormComponent } from './components/client/client-form/client-form.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { EntryCreateComponent } from './components/balance/entry/entry-create/entry-create.component';
+import { EntryDeleteComponent } from './components/balance/entry/entry-delete/entry-delete.component';
+import { EntryReadComponent } from './components/balance/entry/entry-read/entry-read.component';
+import { EntryUpdateComponent } from './components/balance/entry/entry-update/entry-update.component';
+import { EntryComponent } from './components/balance/entry/entry/entry.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -106,6 +112,12 @@ registerLocaleData(localePt);
     CompanyFormComponent,
     ClientFormComponent,
     HomeComponent,
+    EntryComponent,
+    EntryCreateComponent,
+    EntryDeleteComponent,
+    EntryReadComponent,
+    EntryUpdateComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,6 +126,7 @@ registerLocaleData(localePt);
     BrowserAnimationsModule,
     A11yModule,
     BidiModule,
+    MatDividerModule,
     ObserversModule,
     OverlayModule,
     PlatformModule,

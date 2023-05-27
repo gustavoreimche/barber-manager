@@ -26,6 +26,12 @@ i {
   padding: 0;
 }
 
+// Efeito item selecionado Navbar
+
+.mat-list-item.activated {
+  background-color: #e0e0e0; 
+}
+
 // alinha os icones ao texto
 ::ng-deep .mdc-list-item__primary-text {
   display: flex;
