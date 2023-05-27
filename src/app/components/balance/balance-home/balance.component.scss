@@ -1,39 +1,65 @@
 .row {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin: 10px;
+  flex-wrap: wrap;
 }
 
 .table-card {
-  width: 25%;
-  height: 4rem;
+  flex: 0 0 10%;
+  height: 4.8rem;
   border-radius: 5px;
   margin-bottom: 1rem;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-self: auto;
+  transition: box-shadow 0.3s;
+  background-color: #474747;
+  border: none;
+  cursor: pointer;
 }
 
-.align-elements{
+.table-card:hover {
+  background-color: #111111;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.table-card:focus {
+  outline: none;
+}
+
+.align-elements {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
-.table-card,
-.icon,
- h2,
- .green-icon,
-.green-value,
-.red-icon,
-.expense-value,
-.total-title {
+
+.icon-value-container {
   display: flex;
-  justify-content: center;
-  margin-top: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0.5rem;
 }
 
 .icon {
-  font-size: 25px; /* Aumente o valor do font-size para tornar o ícone mais visível */
+  font-size: 35px;
+  width: 35px;
+  height: 35px;
+  align-self: center;
 }
 
- .green-icon {
+.green-icon {
   color: rgb(1, 244, 1);
 }
 
@@ -42,20 +68,26 @@
 }
 
 .red-icon {
-  color: red;
+  color: rgb(255, 44, 44);
+  align-self: auto;
 }
 
 .expense-value {
-  color: red;
+  color: rgb(255, 44, 44);
+  align-self: auto;
 }
 
 .total-title {
   color: white;
 }
 
-// Seletor de mes
+h2 {
+  margin-top: 0;
+  align-self: auto;
+  color: white;
+}
 
-.changeMonthContainer{
+.changeMonthContainer {
   display: flex;
   flex-wrap: wrap;
 }
@@ -66,4 +98,26 @@
 
 ::ng-deep .mat-select-arrow-wrapper {
   display: none;
+}
+
+.button-card {
+  flex: 0 0 10%;
+  height: 4.8rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-self: auto;
+  transition: box-shadow 0.3s;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+}
+
+.button-card:hover {
+  background-color: #999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
