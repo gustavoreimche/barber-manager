@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <mat-form-field class="changeMonthContainer">
   <mat-label>Mês</mat-label>
@@ -39,6 +40,44 @@
       <p>{{ getTotal() | currency }}</p>
     </mat-card-content>
   </mat-card>
+=======
+<div class="row">
+  <button class="table-card hoverable-card">
+    <mat-card-content class="align-elements">
+      <div class="icon-value-container">
+        <mat-icon class="icon green-icon">attach_money</mat-icon>
+        <div class="text-container">
+          <h2>Entradas</h2>
+          <p class="green-value">{{ getTotalEntradas() | currency }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </button>
+
+  <button class="table-card hoverable-card">
+    <mat-card-content class="align-elements">
+      <div class="icon-value-container">
+        <mat-icon class="icon red-icon">money_off</mat-icon>
+        <div class="text-container">
+          <h2>Despesas</h2>
+          <p class="expense-value">{{ getTotalDespesas() | currency }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </button>
+
+  <button class="table-card hoverable-card">
+    <mat-card-content [ngClass]="{ 'green-value': getTotalEntradas() >= getTotalDespesas(), 'expense-value': getTotalEntradas() < getTotalDespesas() }">
+      <div class="icon-value-container">
+        <mat-icon class="icon">monetization_on</mat-icon>
+        <div class="text-container">
+          <h2 class="total-title">Total</h2>
+          <p>{{ getTotal() | currency }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </button>
+>>>>>>> b937999 (hover)
 </div>
 
 <app-cost></app-cost>
