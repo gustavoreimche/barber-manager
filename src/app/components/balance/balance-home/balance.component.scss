@@ -20,75 +20,71 @@
   background-color: #474747;
   border: none;
   cursor: pointer;
+}
 
-  .align-elements {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.align-elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    .icon-value-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.icon-value-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .text-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: 0.5rem;
-.teste{
+.text-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0.5rem;
+}
 
-  display: center;
+.title-card {
+  display: flex;
   flex-direction: column;
   flex: 2;
 }
-        h2 {
-          margin-top: 0;
-          color: white;
-          display: flex;
-          align-items: center;
-          font-size: 18px;
 
-          .icon {
-            width: 30px;
-            height: 30px;
-            margin-right: 8px;
-          }
-        }
+h2 {
+  margin-top: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
 
-        p {
-          color: white;
-        }
-      }
-    }
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+p {
+  color: white;
+}
+
+.green-value {
+  h2 {
+    color: rgb(1, 244, 1);
   }
-
-  &.green-value {
-    .text-container {
-      h2 {
-        color: rgb(1, 244, 1);
-      }
-    }
-    p {
-      color: rgb(1, 244, 1);
-    }
-  }
-
-  &.expense-value {
-    .text-container {
-      h2 {
-        color: rgb(255, 44, 44);
-      }
-    }
-    p {
-      color: rgb(255, 44, 44);
-    }
-  }
-
-  &.total-title {
-    color: white;
+  p {
+    color: rgb(1, 244, 1);
   }
 }
 
+.expense-value {
+  h2 {
+    color: rgb(255, 44, 44);
+  }
+  p {
+    color: rgb(255, 44, 44);
+  }
+}
+
+.total-title {
+  color: white;
+}
