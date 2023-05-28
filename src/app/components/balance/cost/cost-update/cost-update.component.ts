@@ -1,3 +1,4 @@
+import { ReloadService } from './../../../../services/reload.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cost } from '../cost.model';
@@ -6,7 +7,7 @@ import { CostService } from '../cost.service';
 @Component({
   selector: 'app-cost-update',
   templateUrl: './cost-update.component.html',
-  styleUrls: ['./cost-update.component.scss']
+  styleUrls: ['./cost-update.component.scss'],
 })
 export class CostUpdateComponent implements OnInit {
   cost: Cost = {
@@ -14,32 +15,44 @@ export class CostUpdateComponent implements OnInit {
     idCompany: '',
     value: 0,
     description: '',
-    date: new Date()
+    date: new Date(),
   };
+
+  id: string = '';
 
   constructor(
     private costService: CostService,
-    private router: Router,
-    private route: ActivatedRoute
+    private reloadService: ReloadService
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.costService.getById(id).subscribe((cost) => {
-        this.cost = cost;
-      });
-    }
+    // const id = this.route.snapshot.paramMap.get('id');
+    // if (id) {
+    this.costService.getById(this.costService.id).subscribe((cost) => {
+      this.cost = cost;
+    });
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.reload();
+    });
+    // }
+  }
+
+  reload() {
+    this.costService.getById(this.costService.id).subscribe((cost) => {
+      this.cost = cost;
+    });
   }
 
   submit(): void {
     this.costService.update(this.cost).subscribe(() => {
       this.costService.showMessage('Custo atualizado com sucesso!');
-      this.router.navigate(['/cost']);
+      this.reloadService.reloadParent();
+      this.costService.isUpdate = false;
     });
   }
 
   cancel(): void {
-    this.router.navigate(['/cost']);
+    // this.router.navigate(['/cost']);
+    this.costService.isUpdate = false;
   }
 }

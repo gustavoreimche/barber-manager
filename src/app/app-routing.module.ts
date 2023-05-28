@@ -7,9 +7,6 @@ import { ServicoCreateComponent } from './components/servicos/servico-create/ser
 import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
 import { ServicoDeleteComponent } from './components/servicos/servico-delete/servico-delete.component';
 import { CostComponent } from './components/balance/cost/cost/cost.component';
-import { CostCreateComponent } from './components/balance/cost/cost-create/cost-create.component';
-import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
-import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { BalanceComponent } from './components/balance/balance-home/balance.component';
 import { EmployeeComponent } from './components/employee/employee/employee.component';
 import { EmployeeCreateComponent } from './components/employee/employee-create/employee-create.component';
@@ -59,18 +56,6 @@ const routes: Routes = [
   {
     path: 'cost',
     component: CostComponent,
-  },
-  {
-    path: 'cost/create',
-    component: CostCreateComponent,
-  },
-  {
-    path: 'cost/update/:id',
-    component: CostUpdateComponent,
-  },
-  {
-    path: 'cost/delete/:id',
-    component: CostDeleteComponent,
   },
   {
     path: 'employee',

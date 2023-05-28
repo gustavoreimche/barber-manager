@@ -4,6 +4,7 @@ import { CostService } from '../cost.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-cost-read',
@@ -22,7 +23,8 @@ export class CostReadComponent implements OnInit {
 
   constructor(
     private costService: CostService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private reloadService: ReloadService
   ) {
     this.dataSource = new MatTableDataSource(this.costs);
   }
@@ -34,6 +36,9 @@ export class CostReadComponent implements OnInit {
       .subscribe((result) => {
         this.isMobile = result.matches;
       });
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.loadCosts();
+    });
   }
 
   ngAfterViewInit() {
@@ -52,5 +57,19 @@ export class CostReadComponent implements OnInit {
     );
   }
 
-  update(): void {}
+  update(id: string): void {
+    this.costService.isUpdate = true;
+    this.costService.id = id;
+    this.costService.isCreate = false;
+    this.costService.isDelete = false;
+    this.reloadService.reloadParent();
+  }
+
+  delete(id: string): void {
+    this.costService.isUpdate = false;
+    this.costService.id = id;
+    this.costService.isCreate = false;
+    this.costService.isDelete = true;
+    this.reloadService.reloadParent();
+  }
 }

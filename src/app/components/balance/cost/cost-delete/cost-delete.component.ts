@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CostService } from '../cost.service';
 import { Cost } from '../cost.model';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-cost-delete',
@@ -18,14 +19,22 @@ export class CostDeleteComponent implements OnInit {
   };
 
   constructor(
-    private router: Router,
     private costService: CostService,
-    private route: ActivatedRoute
+    private reloadService: ReloadService
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.costService.getById(id as string).subscribe((cost: Cost) => {
+    this.costService.getById(this.costService.id).subscribe((cost: Cost) => {
+      this.cost = cost;
+    });
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.reload();
+    });
+  }
+
+  reload() {
+    this.costService.getById(this.costService.id).subscribe((cost) => {
+      console.log(cost);
       this.cost = cost;
     });
   }
@@ -34,10 +43,11 @@ export class CostDeleteComponent implements OnInit {
     this.costService.delete(this.cost.id as string).subscribe(() => {
       this.costService.showMessage('Custo excluído!');
     });
-    this.router.navigate(['/cost']);
+    this.costService.isDelete = false;
+    this.reloadService.reloadParent();
   }
 
   cancel(): void {
-    this.router.navigate(['/cost']);
+    this.costService.isDelete = false;
   }
 }

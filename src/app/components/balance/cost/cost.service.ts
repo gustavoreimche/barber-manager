@@ -13,6 +13,7 @@ export class CostService {
   isCreate = false;
   isUpdate = false;
   isDelete = false;
+  id: string = '';
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
