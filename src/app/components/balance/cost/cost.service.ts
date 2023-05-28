@@ -10,6 +10,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CostService {
   url = api.url + 'costs';
+  isCreate = false;
+  isUpdate = false;
+  isDelete = false;
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 

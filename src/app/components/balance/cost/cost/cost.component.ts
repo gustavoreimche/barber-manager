@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-cost',
   templateUrl: './cost.component.html',
-  styleUrls: ['./cost.component.scss']
+  styleUrls: ['./cost.component.scss'],
 })
 export class CostComponent implements OnInit {
   costs: Cost[] = []; // Inicialize a propriedade costs como um array vazio
+  create: boolean = false; // Inicialize a propriedade
 
-  constructor(private router: Router, private costService: CostService) {}
+  constructor(public costService: CostService) {}
 
   ngOnInit(): void {
     this.loadCosts(); // Chame o método para carregar os custos
@@ -25,6 +26,7 @@ export class CostComponent implements OnInit {
   }
 
   navigateToCostCreate(): void {
-    this.router.navigate(['/cost/create']);
+    this.costService.isCreate = !this.costService.isCreate;
+    // this.router.navigate(['/cost/create']);
   }
 }

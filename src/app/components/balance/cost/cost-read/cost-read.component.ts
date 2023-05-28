@@ -51,4 +51,6 @@ export class CostReadComponent implements OnInit {
       }
     );
   }
+
+  update(): void {}
 }

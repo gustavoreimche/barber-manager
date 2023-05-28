@@ -1,7 +1,9 @@
 <button mat-raised-button (click)="navigateToCostCreate()">
   CADASTRAR DESPESA
 </button>
-<br />
+<br /><br />
+<app-cost-create *ngIf="this.costService.isCreate"></app-cost-create>
+<app-cost-update *ngIf="this.costService.isUpdate"></app-cost-update>
 <br />
 
 <app-cost-read></app-cost-read>
