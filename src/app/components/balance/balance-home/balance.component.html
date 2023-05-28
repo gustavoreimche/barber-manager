@@ -1,38 +1,51 @@
+
 <div class="row">
   <div class="table-card">
-    <div class="align-elements">
-      <div class="icon-value-container">
-        <div class="text-container">
-          <h2><img src="/assets/cash-coin.svg" alt="Cash Coin" class="icon">
-          Entradas</h2>
-          <p class="green-value">{{ getTotalEntradas() | currency }}</p>
-        </div>
-      </div>
+
+    <div class="icon">
+      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
     </div>
+
+    <div class="Title-card">
+      <h2>
+        Entradas
+      </h2>
+    </div>
+
+    <p class="green-value">{{ getTotalEntradas() | currency }}</p>
+
   </div>
 
   <div class="table-card">
-    <div class="align-elements">
-      <div class="icon-value-container">
-        <div class="text-container">
-          <img src="/assets/cash-coin.svg" alt="Cash Coin" class="icon">
-          <div class="teste"><h2>
-          Despesas</h2>
-          <p class="expense-value">{{ getTotalDespesas() | currency }}</p>
-        </div>
-      </div>
-      </div>
+
+    <div class="icon">
+      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
     </div>
+
+    <div class="Title-card">
+      <h2>
+        Despesas
+      </h2>
+    </div>
+
+    <p class="expense-value">{{ getTotalDespesas() | currency }}</p>
+
   </div>
 
   <div class="table-card" [ngClass]="{ 'green-value': getTotalEntradas() >= getTotalDespesas(), 'expense-value': getTotalEntradas() < getTotalDespesas() }">
-    <div class="icon-value-container">
-      <div class="text-container">
-        <img src="/assets/cash-coin.svg" alt="Cash Coin" class="icon">
-        <h2 class="total-title">Total</h2>
-        <p>{{ getTotal() | currency }}</p>
-      </div>
+
+    <div class="icon">
+      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
     </div>
+
+    <div class="title-card">
+      <h2>
+        Total
+      </h2>
+    </div>
+
+    <p>{{ getTotal() | currency }}</p>
+
   </div>
 </div>
 
