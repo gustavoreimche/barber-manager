@@ -17,6 +17,7 @@ export class CompanyService {
     bairro: '',
     cep: '',
     numero: null,
+    localidade: '',
   };
 
   isEdit = false;

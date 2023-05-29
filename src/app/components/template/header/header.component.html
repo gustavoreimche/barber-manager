@@ -4,33 +4,17 @@
   </a>
   <span>
     <a routerLink="/" [ngClass]="{ center: isHandset$ | async }">
-      <img
-        class="logo"
-        src="./assets/logo.png"
-        alt="logo"
-        style="margin-right: 15px"
-      />
-      {{ this.company.name }}
+      <img class="logo" src="./assets/logo.png" alt="logo" />
+      {{ this.selectedCompany.name }}
     </a>
   </span>
   <span class="title-group">
-    <button
-      mat-icon-button
-      [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu"
-    >
-      <mat-icon
-        class="icon-display"
-        fontIcon="account_circle"
-        color="warn"
-      ></mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon class="icon-display" fontIcon="account_circle" color="warn"></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button
-        mat-menu-item
-        *ngFor="let company of companys"
-        (click)="this.switchCompany(company.id !== undefined ? company.id : '')"
-      >
+      <button mat-menu-item *ngFor="let company of companys"
+        (click)="this.switchCompany(company.id !== undefined ? company.id : '')">
         <mat-icon>apartment</mat-icon>
         <span>{{ company.name }}</span>
       </button>

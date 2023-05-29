@@ -33,10 +33,6 @@ export class CompanyReadComponent implements OnInit {
       });
   }
 
-  formatPhoneNumber(phone: string): string {
-    return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
-  }
-
   //quando clicar no edit vai chamar o service e epgar company pelo id
   edit(id: string): void {
     this.companyService.isDelete = false;
@@ -47,6 +43,7 @@ export class CompanyReadComponent implements OnInit {
       this.reloadService.reloadParent();
     });
   }
+
   delete(id: string): void {
     this.companyService.isEdit = true;
     this.companyService.isDelete = true;

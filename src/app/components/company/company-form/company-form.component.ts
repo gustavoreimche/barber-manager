@@ -28,6 +28,7 @@ export class CompanyFormComponent {
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
           this.cep = data.cep;
+          this.city = data.localidade;
         });
       }
     });
@@ -54,11 +55,12 @@ export class CompanyFormComponent {
   cep: string = '';
   logradouro: string = '';
   bairro: string = '';
+  city: string = '';
   numero: number = 0;
 
   submit(): void {
     if (!this.companyService.isEdit && !this.companyService.isDelete) {
-      this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}`;
+      this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
       console.log(this.company.address);
       this.company.phone = this.companyService.formatPhoneNumber(
         this.company.phone

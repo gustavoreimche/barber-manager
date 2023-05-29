@@ -59,7 +59,7 @@ export class UserService {
   }
 
   getCompaniesByIds(companyIds: string[]): Observable<User[]> {
-    const params = companyIds.map(id => `idCompanys_like=${id}`).join('&');
+    const params = companyIds.map((id) => `idCompanys_like=${id}`).join('&');
     return this.http.get<User[]>(`${this.url}?${params}`);
   }
 }

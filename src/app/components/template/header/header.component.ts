@@ -26,25 +26,20 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit() {
-    this.updateUser();
+    this.update();
     this.reloadNavService.update$.subscribe(() => {
-      this.updateUser();
+      this.update();
     });
-    this.companyService
-      .getById(localStorage.getItem('idCompany') as string)
-      .subscribe((company) => {
-        this.company = company;
-        console.log(company);
-      });
   }
+
   companys: Company[] = [];
-  company: Company = {
+  selectedCompany: Company = {
     name: '',
     address: '',
     phone: '',
   };
 
-  updateUser() {
+  update() {
     const idUser = localStorage.getItem('idUser');
     this.userService.getById(idUser as string).subscribe((user) => {
       this.companys.splice(0);
@@ -58,7 +53,7 @@ export class HeaderComponent {
     this.companyService
       .getById(localStorage.getItem('idCompany') as string)
       .subscribe((company) => {
-        this.company = company;
+        this.selectedCompany = company;
       });
   }
 
@@ -80,6 +75,7 @@ export class HeaderComponent {
 
   sair(): void {
     localStorage.clear();
+    this.router.navigate(['/login']);
     location.reload();
   }
 }

@@ -3,7 +3,7 @@ export interface User {
   idCompanys?: Array<string>;
   name?: string;
   email: string;
-  password: string;
+  password?: string;
   address?: string; // Adicione a propriedade 'address' aqui
   phone?: string;
   admin?: boolean;

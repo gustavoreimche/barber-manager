@@ -80,6 +80,9 @@ import { EntryDeleteComponent } from './components/balance/entry/entry-delete/en
 import { EntryReadComponent } from './components/balance/entry/entry-read/entry-read.component';
 import { EntryUpdateComponent } from './components/balance/entry/entry-update/entry-update.component';
 import { EntryComponent } from './components/balance/entry/entry/entry.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+import { AuthService } from './services/auth.service';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -160,7 +163,16 @@ registerLocaleData(localePt);
     MatTableModule,
     MatToolbarModule,
   ],
-  providers: [NavService, { provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [
+    NavService,
+    AuthService,
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

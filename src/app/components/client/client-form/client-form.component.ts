@@ -20,14 +20,15 @@ export class ClientFormComponent {
   client: Client = {
     name: '',
     phone: '',
-    idCompany: localStorage.getItem('idCompany') ?? '',
+    idCompany: localStorage.getItem('idCompany') as string,
   };
 
   cepControl = new FormControl();
   cep: string = '';
   logradouro: string = '';
   bairro: string = '';
-  numero: number = 0;
+  city: string = '';
+  numero: number | null = null;
 
   ngOnInit() {
     this.cepControl.valueChanges.subscribe((cep) => {
@@ -37,6 +38,7 @@ export class ClientFormComponent {
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
           this.cep = data.cep;
+          this.city = data.localidade;
         });
       }
     });
@@ -46,38 +48,35 @@ export class ClientFormComponent {
   }
 
   submit(): void {
-    // if (!this.companyService.isEdit && !this.companyService.isDelete) {
-    //   this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}`;
-    //   console.log(this.company.address);
-    //   this.company.phone = this.companyService.formatPhoneNumber(
-    //     this.company.phone
-    //   );
-    //   this.companyService.create(this.company).subscribe((company) => {
-    //     this.companyService.showMessage(
-    //       `Empresa: ${company.name} criada com sucesso!`
-    //     );
-    //   });
-    // } else if (this.companyService.isEdit && !this.companyService.isDelete) {
-    //   this.companyService.update(this.company).subscribe((company) => {
-    //     this.companyService.showMessage(
-    //       `Empresa: ${company.name} alterada com sucesso!`
-    //     );
-    //   });
-    // } else if (this.companyService.isDelete) {
-    //   this.companyService
-    //     .delete(this.company.id as string)
-    //     .subscribe((company) => {
-    //       this.companyService.showMessage('Empresa excluida!');
-    //     });
-    // }
-    console.log(this.client);
+    if (!this.clientService.isEdit && !this.clientService.isDelete) {
+      this.client.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
+      console.log(this.client.address);
+      this.client.phone = this.clientService.formatPhoneNumber(
+        this.client.phone as string
+      );
+      this.clientService.create(this.client).subscribe((client) => {
+        this.clientService.showMessage(
+          `Empresa: ${client.name} criada com sucesso!`
+        );
+      });
+    } else if (this.clientService.isEdit && !this.clientService.isDelete) {
+      this.clientService.update(this.client).subscribe((client) => {
+        this.clientService.showMessage(
+          `Cliente: ${client.name} alterada com sucesso!`
+        );
+      });
+    } else if (this.clientService.isDelete) {
+      this.clientService.delete(this.client.id as string).subscribe(() => {
+        this.clientService.showMessage('Cliente excluido!');
+      });
+    }
   }
 
   cancel(): void {
     this.cep = '';
     this.logradouro = '';
     this.bairro = '';
-    this.numero = 0;
+    this.numero = null;
     this.clientService.isDelete = false;
     this.clientService.isEdit = false;
     this.clientService.client = {
