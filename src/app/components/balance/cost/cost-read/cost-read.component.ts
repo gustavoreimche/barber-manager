@@ -5,6 +5,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ReloadService } from 'src/app/services/reload.service';
+import { BalanceService } from '../../balance.service';
 
 @Component({
   selector: 'app-cost-read',
@@ -15,6 +16,7 @@ export class CostReadComponent implements OnInit {
   costs: Cost[] = [];
   isMobile = false;
   dataSource: MatTableDataSource<Cost>;
+  actualMonth = new Date().getMonth();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -24,7 +26,8 @@ export class CostReadComponent implements OnInit {
   constructor(
     private costService: CostService,
     private breakpointObserver: BreakpointObserver,
-    private reloadService: ReloadService
+    private reloadService: ReloadService,
+    public balanceService: BalanceService
   ) {
     this.dataSource = new MatTableDataSource(this.costs);
   }
@@ -48,8 +51,14 @@ export class CostReadComponent implements OnInit {
   loadCosts(): void {
     this.costService.getAllCosts().subscribe(
       (costs: Cost[]) => {
-        this.costs = costs;
-        this.dataSource.data = costs;
+        this.balanceService.costs = costs.filter((cost) => {
+          const costDate = new Date(cost.date);
+          return costDate.getMonth() === this.balanceService.actualMonth;
+        });
+        this.dataSource.data = costs.filter((cost) => {
+          const costDate = new Date(cost.date);
+          return costDate.getMonth() === this.balanceService.actualMonth;
+        });
       },
       (error: any) => {
         console.error(error);

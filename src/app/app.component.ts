@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   template: `
     <app-header></app-header>
-    <app-footer></app-footer>
     <app-nav></app-nav>
+    <app-footer></app-footer>
   `,
 })
 export class AppComponent implements OnInit {

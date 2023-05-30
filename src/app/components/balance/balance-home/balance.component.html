@@ -1,53 +1,55 @@
-
-<div class="row">
-  <div class="table-card">
-
-    <div class="icon">
-      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
-    </div>
-
-    <div class="Title-card">
-      <h2>
-        Entradas
-      </h2>
-    </div>
-
-    <p class="green-value">{{ getTotalEntradas() | currency }}</p>
-
-  </div>
-
-  <div class="table-card">
-
-    <div class="icon">
-      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
-    </div>
-
-    <div class="Title-card">
-      <h2>
-        Despesas
-      </h2>
-    </div>
-
-    <p class="expense-value">{{ getTotalDespesas() | currency }}</p>
-
-  </div>
-
-  <div class="table-card" [ngClass]="{ 'green-value': getTotalEntradas() >= getTotalDespesas(), 'expense-value': getTotalEntradas() < getTotalDespesas() }">
-
-    <div class="icon">
-      <img src="/assets/cash-coin.svg" alt="Cash Coin" >
-    </div>
-
-    <div class="title-card">
-      <h2>
-        Total
-      </h2>
-    </div>
-
-    <p>{{ getTotal() | currency }}</p>
-
+<div class="center table-card mb-20 column">
+  <span class="month">Mês</span>
+  <div class="row">
+    <button mat-icon-button (click)="previus()">
+      <i class="material-icons">arrow_back_ios</i>
+    </button>
+    <mat-form-field>
+      <mat-select [(ngModel)]="this.balanceService.actualMonth" (ngModelChange)="reload()" disableRipple>
+        <mat-option *ngFor="let month of months" [value]="month.id">
+          {{month.month}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button (click)="next()">
+      <i class="material-icons">arrow_forward_ios</i>
+    </button>
   </div>
 </div>
 
-<app-cost></app-cost>
+<div class="row">
+  <div class="table-card">
+    <div class="column">
+      <span class="title"> Entradas </span>
+      <p class="green-value value">{{ getTotalEntradas() | currency: "BRL" }}</p>
+    </div>
+    <div class="icon green">
+      <i class="material-icons icon-img">attach_money</i>
+    </div>
+  </div>
 
+  <div class="table-card despesas">
+    <div class="column">
+      <span class="title"> Despesas </span>
+      <p class="expense-value value">{{ getTotalDespesas() | currency: "BRL" }}</p>
+    </div>
+    <div class="icon red">
+      <i class="material-icons icon-img">money_off</i>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="column">
+      <span class="title"> Total </span>
+      <p class="expense-value value" [ngClass]="{'text-green': getTotal()>0,'text-red': getTotal()<0}">{{ getTotal() |
+        currency: "BRL" }}</p>
+    </div>
+    <div class="icon" [ngClass]="{'text-green': getTotal()>0,'text-red': getTotal()<0}">
+      <i class="material-icons icon-img">import_export</i>
+    </div>
+  </div>
+</div>
+<br />
+
+
+<app-cost></app-cost>

@@ -7,9 +7,13 @@ i {
 }
 
 .content {
+  overflow-y: auto;
+  max-height: calc(100vh - 104px);
   margin-top: 64px;
-  padding: 16px;
-  height: 100%;
+}
+
+.router-outlet-wrapper {
+  padding: 16px; /* Opcional: Adicione um preenchimento para melhorar a aparência */
 }
 
 .text {
@@ -29,7 +33,7 @@ i {
 // Efeito item selecionado Navbar
 
 .mat-list-item.activated {
-  background-color: #e0e0e0; 
+  background-color: #e0e0e0;
 }
 
 // alinha os icones ao texto

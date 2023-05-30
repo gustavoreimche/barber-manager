@@ -1,59 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 import { Servico } from '../../servicos/servico.model';
 import { ServicoService } from '../../servicos/servico.service';
+import { BalanceService } from '../balance.service';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-balance',
   templateUrl: './balance.component.html',
-  styleUrls: ['./balance.component.scss']
+  styleUrls: ['./balance.component.scss'],
 })
-
 export class BalanceComponent implements OnInit {
-  selectedMonth: string;
-  months: string[] = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-  servicos: Servico[] = [];
+  months = [
+    { id: 0, month: 'Janeiro' },
+    { id: 1, month: 'Fevereiro' },
+    { id: 2, month: 'Março' },
+    { id: 3, month: 'Abril' },
+    { id: 4, month: 'Maio' },
+    { id: 5, month: 'Junho' },
+    { id: 6, month: 'Julho' },
+    { id: 7, month: 'Agosto' },
+    { id: 8, month: 'Setembro' },
+    { id: 9, month: 'Outubro' },
+    { id: 10, month: 'Novembro' },
+    { id: 11, month: 'Dezembro' },
+  ];
 
-  constructor(private servicoService: ServicoService) { 
-    this.selectedMonth = this.months[0]; 
-  }
+  selectedMonth: number = new Date().getMonth();
 
-  changeMonth(offset: number) {
-    const currentIndex = this.months.indexOf(this.selectedMonth);
-    const newIndex = currentIndex + offset;
-    if (newIndex >= 0 && newIndex < this.months.length) {
-      this.selectedMonth = this.months[newIndex];
-    }
-  }
+  constructor(
+    public balanceService: BalanceService,
+    private reloadService: ReloadService
+  ) {}
 
-  showMonthSelect: boolean = false;
-
-toggleMonthSelect() {
-  this.showMonthSelect = !this.showMonthSelect;
-}
-
-  ngOnInit(): void {
-    this.getServicos();
-  }
-
-  getServicos(): void {
-    this.servicoService.load().subscribe(servicos => {
-      this.servicos = servicos;
-    });
-  }
+  ngOnInit(): void {}
 
   getTotalEntradas(): number {
-    return this.servicos
-      .filter(servico => servico.price && servico.price > 0)
-      .reduce((total, servico) => total + servico.price!, 0);
+    return 300;
+    //TODO Calcular o valor da entrada com base da tabela ServiceExecuted
   }
 
   getTotalDespesas(): number {
-    return this.servicos
-      .filter(servico => servico.price && servico.price < 0)
-      .reduce((total, servico) => total + servico.price!, 0);
+    let total = 0;
+    this.balanceService.costs.forEach((cost) => {
+      total += cost.value;
+    });
+
+    return total;
   }
 
   getTotal(): number {
-    return this.servicos.reduce((total, servico) => total + (servico.price || 0), 0);
+    return this.getTotalEntradas() - this.getTotalDespesas();
+  }
+
+  reload(): void {
+    this.reloadService.reloadParent();
+  }
+
+  previus(): void {
+    this.balanceService.actualMonth = this.balanceService.actualMonth - 1;
+    this.reload();
+  }
+
+  next(): void {
+    this.balanceService.actualMonth = this.balanceService.actualMonth + 1;
+    this.reload();
   }
 }
