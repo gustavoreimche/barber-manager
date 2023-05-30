@@ -6,7 +6,7 @@ import { AuthModel } from '../models/auth.model';
 
 @Injectable()
 export class AuthService {
-  url = api.url + 'users';
+  url = api.url + 'sessions';
   token: string | null;
 
   constructor(private http: HttpClient) {
@@ -21,8 +21,8 @@ export class AuthService {
       .post<AuthModel>(this.url, { email: email, password: password })
       .pipe(
         map((data) => {
-          if (data.user.email == email) {
-            this.setToken('aaa');
+          if (data) {
+            this.setToken(data.token);
             localStorage.setItem('idUser', data.user.id as string);
             return true;
           }

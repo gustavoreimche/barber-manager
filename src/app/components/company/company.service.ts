@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Company } from './company.model';
 import { HttpClient } from '@angular/common/http';
@@ -50,7 +50,8 @@ export class CompanyService {
   }
 
   update(company: Company): Observable<Company> {
-    return this.http.put<Company>(`${this.url}/${company.id}`, company);
+    console.log(company);
+    return this.http.put<Company>(`${this.url}/${company._id}`, company);
   }
 
   getById(id: string): Observable<Company> {
@@ -58,6 +59,16 @@ export class CompanyService {
   }
 
   delete(id: string): Observable<Company> {
+    // let checkIsSelectedCompany = false;
+    // this.getById(id).subscribe((data) => {
+    //   if (data._id) {
+    //     checkIsSelectedCompany = true;
+    //   }
+    // });
+    // if (checkIsSelectedCompany) {
+    //   this.showMessage('Não é possível deletar uma empresa selecionada');
+    //   return throwError('Não é possível deletar uma empresa selecionada');
+    // }
     return this.http.delete<Company>(`${this.url}/${id}`);
   }
 

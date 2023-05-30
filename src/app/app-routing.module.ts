@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CompanyComponent } from './components/company/company/company.component';
 import { ServicoComponent } from './components/servicos/servico/servico.component';
-import { ServicoCreateComponent } from './components/servicos/servico-create/servico-create.component';
-import { ServicoUpdateComponent } from './components/servicos/servico-update/servico-update.component';
-import { ServicoDeleteComponent } from './components/servicos/servico-delete/servico-delete.component';
 import { CostComponent } from './components/balance/cost/cost/cost.component';
 import { BalanceComponent } from './components/balance/balance-home/balance.component';
 import { EmployeeComponent } from './components/employee/employee/employee.component';
@@ -36,42 +33,37 @@ const routes: Routes = [
   {
     path: 'service',
     component: ServicoComponent,
-  },
-  {
-    path: 'service/create',
-    component: ServicoCreateComponent,
-  },
-  {
-    path: 'service/update/:id',
-    component: ServicoUpdateComponent,
-  },
-  {
-    path: 'service/delete/:id',
-    component: ServicoDeleteComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'balance',
     component: BalanceComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'cost',
     component: CostComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'employee',
     component: EmployeeComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'employee/create',
     component: EmployeeCreateComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'employee/update/:id',
     component: EmployeeUpdateComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'employee/delete/:id',
     component: EmployeeDeleteComponent,
+    canActivate: [AuthGuardLogin],
   },
   {
     path: 'login',

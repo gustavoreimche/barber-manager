@@ -10,6 +10,10 @@ import { api } from 'src/api';
 })
 export class ServicoService {
   url = api.url + 'services';
+  isCreate = true;
+  isUpdate = false;
+  isDelete = false;
+  id: string = '';
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) {}
 
@@ -22,15 +26,20 @@ export class ServicoService {
   }
 
   load(): Observable<Servico[]> {
-    return this.http.get<Servico[]>(this.url);
+    return this.http.get<Servico[]>(
+      this.url + '/companys/' + localStorage.getItem('idCompany')
+    );
   }
 
   create(servico: Servico): Observable<Servico> {
-    return this.http.post<Servico>(this.url, servico);
+    return this.http.post<Servico>(
+      this.url + '/' + localStorage.getItem('idCompany'),
+      servico
+    );
   }
 
   update(servico: Servico): Observable<Servico> {
-    return this.http.put<Servico>(`${this.url}/${servico.id}`, servico);
+    return this.http.put<Servico>(`${this.url}/${servico._id}`, servico);
   }
 
   getById(id: string): Observable<Servico> {

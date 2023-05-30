@@ -57,11 +57,17 @@ export class ClientService {
   }
 
   create(client: Client): Observable<Client> {
-    return this.http.post<Client>(this.url, client);
+    console.log(client);
+    return this.http.post<Client>(
+      this.url + '/' + localStorage.getItem('idCompany'),
+      client
+    );
   }
 
   load(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.url);
+    return this.http.get<Client[]>(
+      this.url + '/companys/' + localStorage.getItem('idCompany')
+    );
   }
 
   getById(id: string): Observable<Client> {
@@ -73,7 +79,7 @@ export class ClientService {
   }
 
   update(client: Client): Observable<Client> {
-    return this.http.put<Client>(`${this.url}/${client.id}`, client);
+    return this.http.put<Client>(`${this.url}/${client._id}`, client);
   }
 
   delete(id: string): Observable<Client> {

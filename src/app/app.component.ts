@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {
     localStorage.setItem('isAdmin', 'true');
-    // localStorage.setItem('idCompany', 'pCKbltP');
+    localStorage.setItem('idCompany', '64761e47f5e4d91bab04fd20');
   }
 }

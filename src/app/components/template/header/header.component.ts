@@ -9,6 +9,7 @@ import { CompanyService } from '../../company/company.service';
 import { Company } from '../../company/company.model';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-header',
@@ -19,9 +20,9 @@ export class HeaderComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private navService: NavService,
-    private userService: UserService,
     private companyService: CompanyService,
     private reloadNavService: ReloadNavService,
+    private reloadService: ReloadService,
     private router: Router
   ) {}
 
@@ -40,21 +41,27 @@ export class HeaderComponent {
   };
 
   update() {
-    const idUser = localStorage.getItem('idUser');
-    this.userService.getById(idUser as string).subscribe((user) => {
-      this.companys.splice(0);
-      user.idCompanys?.forEach((idCompany) => {
-        this.companyService.getById(idCompany).subscribe((company) => {
-          this.companys.push(company);
-        });
-      });
+    this.companyService.load().subscribe((companies) => {
+      console.log('Loaded companies:', companies);
+      this.companys = companies;
     });
-    this.companys.sort();
-    this.companyService
-      .getById(localStorage.getItem('idCompany') as string)
-      .subscribe((company) => {
-        this.selectedCompany = company;
-      });
+    console.log(localStorage.getItem('idCompany'));
+    if (localStorage.getItem('idCompany') !== null) {
+      this.companyService
+        .getById(localStorage.getItem('idCompany') as string)
+        .subscribe((company) => {
+          if (company === null) {
+            this.selectedCompany = {
+              name: '',
+              address: '',
+              phone: '',
+            };
+          } else {
+            this.selectedCompany = company;
+            console.log(this.selectedCompany);
+          }
+        });
+    }
   }
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -67,9 +74,13 @@ export class HeaderComponent {
 
   switchCompany(id: string): void {
     console.log(id);
+    this.companyService.getById(id).subscribe((company) => {
+      this.selectedCompany = company;
+      console.log(this.selectedCompany);
+    });
     localStorage.setItem('idCompany', id);
-    // this.reloadNavService.update();
-    location.reload();
+    this.reloadNavService.update();
+    this.reloadService.reloadParent();
     // this.router.navigate([this.location.path()]);
   }
 

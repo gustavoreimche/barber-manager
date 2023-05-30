@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Servico } from '../servico.model';
 import { ServicoService } from '../servico.service';
 import { Router } from '@angular/router';
+import { ReloadService } from 'src/app/services/reload.service';
 
 @Component({
   selector: 'app-servico-create',
@@ -9,11 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./servico-create.component.scss'],
 })
 export class ServicoCreateComponent {
-  constructor(private router: Router, private servicoService: ServicoService) {}
+  constructor(
+    private router: Router,
+    private servicoService: ServicoService,
+    private reloadService: ReloadService
+  ) {}
 
   servico: Servico = {
     name: '',
-    description: '',
     price: null,
   };
 
@@ -22,11 +26,11 @@ export class ServicoCreateComponent {
       this.servicoService.showMessage(
         `Serviço: ${servico.name} criada com sucesso!`
       );
+      this.reloadService.reloadParent();
     });
-    this.router.navigate(['/service']);
   }
 
   cancel(): void {
-    this.router.navigate(['/service']);
+    this.servicoService.isCreate = false;
   }
 }

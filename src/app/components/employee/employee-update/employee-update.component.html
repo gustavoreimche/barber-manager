@@ -19,13 +19,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Telefone</mat-label>
-      <input
-        mask="00-00000-0000"
-        required
-        matInput
-        [(ngModel)]="user.phone"
-        name="phone"
-      />
+      <input mask="00-00000-0000" required matInput [(ngModel)]="user.phone" name="phone" />
       <mat-icon matSuffix>phone</mat-icon>
       <mat-hint>Incluir código de área</mat-hint>
     </mat-form-field>
@@ -47,20 +41,10 @@
     </mat-form-field>
     <br />
     <div class="actions">
-      <button
-        mat-raised-button
-        color="accent"
-        class="button-cadastro"
-        (click)="this.submit()"
-      >
+      <button mat-raised-button color="accent" class="button-cadastro" (click)="this.submit()">
         ATUALIZAR
       </button>
-      <button
-        mat-raised-button
-        color="warn"
-        (click)="this.cancel()"
-        class="button-cancel"
-      >
+      <button mat-raised-button color="warn" (click)="this.cancel()" class="button-cancel">
         CANCELAR
       </button>
     </div>

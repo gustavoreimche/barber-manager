@@ -46,7 +46,7 @@
     <br />
     <div class="actions">
       <button mat-raised-button color="{{ this.companyService.isDelete ? 'warn' : 'accent' }}" class="button-cadastro"
-        (click)="this.submit()">
+        (click)="this.submit($event)">
         {{ this.companyService.isDelete ? "EXCLUIR" : "SALVAR" }}
       </button>
       <button mat-raised-button color="{{ this.companyService.isDelete ? 'accent' : 'warn' }}" (click)="this.cancel()"

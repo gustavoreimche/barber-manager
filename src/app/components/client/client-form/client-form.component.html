@@ -17,11 +17,11 @@
       <!-- CAMPO NOME -->
       <mat-form-field appearance="fill" class="name">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="client.name" name="name" required [disabled]="this.clientService.isDelete" />
+        <input matInput [(ngModel)]="client.name" name="name" [disabled]="this.clientService.isDelete" />
       </mat-form-field>
       <mat-form-field *ngIf="this.clientService.isMilitary" class="squad">
         <mat-label>Esqd</mat-label>
-        <mat-select [(ngModel)]="client.squad" name="squad" [disabled]="this.clientService.isDelete">
+        <mat-select [(ngModel)]="client.esqd" name="esqd" [disabled]="this.clientService.isDelete">
           <mat-option [disabled]="this.clientService.isDelete" *ngFor="let squad of this.clientService.squad"
             value="{{ squad }}">{{ squad }}</mat-option>
         </mat-select>
@@ -68,7 +68,7 @@
     <br />
     <div class="actions">
       <button mat-raised-button color="{{ this.clientService.isDelete ? 'warn' : 'accent' }}" class="button-cadastro"
-        (click)="this.submit()">
+        (click)="this.submit($event)">
         {{ this.clientService.isDelete ? "EXCLUIR" : "SALVAR" }}
       </button>
       <button mat-raised-button color="{{ this.clientService.isDelete ? 'accent' : 'warn' }}" (click)="this.cancel()"

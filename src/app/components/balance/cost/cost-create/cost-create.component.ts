@@ -16,11 +16,11 @@ export class CostCreateComponent {
   ) {}
 
   cost: Cost = {
-    id: '',
+    _id: '',
     idCompany: '',
     value: 0,
     description: '',
-    date: new Date(),
+    costDate: new Date(),
   };
 
   submit(): void {

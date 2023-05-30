@@ -5,7 +5,7 @@
   <span>
     <a routerLink="/" [ngClass]="{ center: isHandset$ | async }">
       <img class="logo" src="./assets/logo.png" alt="logo" />
-      {{ this.selectedCompany.name }}
+      {{ this.selectedCompany.name === null ? '' : this.selectedCompany.name}}
     </a>
   </span>
   <span class="title-group">
@@ -14,7 +14,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item *ngFor="let company of companys"
-        (click)="this.switchCompany(company.id !== undefined ? company.id : '')">
+        (click)="this.switchCompany(company._id !== undefined ? company._id : '')">
         <mat-icon>apartment</mat-icon>
         <span>{{ company.name }}</span>
       </button>

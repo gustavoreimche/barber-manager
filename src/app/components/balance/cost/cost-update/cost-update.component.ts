@@ -11,11 +11,11 @@ import { CostService } from '../cost.service';
 })
 export class CostUpdateComponent implements OnInit {
   cost: Cost = {
-    id: '',
+    _id: '',
     idCompany: '',
     value: 0,
     description: '',
-    date: new Date(),
+    costDate: new Date(),
   };
 
   id: string = '';

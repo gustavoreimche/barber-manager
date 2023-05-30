@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicoService } from '../servico.service';
 
 @Component({
   selector: 'app-servico',
@@ -7,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./servico.component.scss'],
 })
 export class ServicoComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public servicoService: ServicoService) {}
 
   ngOnInit(): void {}
 
   navigateToServiceCreate(): void {
-    this.router.navigate(['/service/create']);
+    this.servicoService.isCreate = true;
   }
 }

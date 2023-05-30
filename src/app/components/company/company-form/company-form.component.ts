@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CompanyService } from '../company.service';
 import { ReloadService } from '../../../services/reload.service';
 import { CepService } from 'src/app/services/cep.service';
+import { ReloadNavService } from 'src/app/services/reloadNav.service';
 
 @Component({
   selector: 'app-company-form',
@@ -16,7 +17,8 @@ export class CompanyFormComponent {
     private router: Router,
     public cepService: CepService,
     public companyService: CompanyService,
-    private reloadService: ReloadService
+    private reloadService: ReloadService,
+    private reloadNavService: ReloadNavService
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class CompanyFormComponent {
 
   reload(): void {
     this.company = this.companyService.company;
+    console.log(this.company);
   }
 
   company: Company = {
@@ -58,8 +61,11 @@ export class CompanyFormComponent {
   city: string = '';
   numero: number = 0;
 
-  submit(): void {
+  submit(event: Event): void {
+    event.preventDefault();
+
     if (!this.companyService.isEdit && !this.companyService.isDelete) {
+      console.log(this.company);
       this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
       console.log(this.company.address);
       this.company.phone = this.companyService.formatPhoneNumber(
@@ -69,20 +75,30 @@ export class CompanyFormComponent {
         this.companyService.showMessage(
           `Empresa: ${company.name} criada com sucesso!`
         );
+        this.reloadService.reloadParent();
+        this.reloadNavService.update();
       });
     } else if (this.companyService.isEdit && !this.companyService.isDelete) {
-      this.companyService.update(this.company).subscribe((company) => {
-        this.companyService.showMessage(
-          `Empresa: ${company.name} alterada com sucesso!`
-        );
-      });
+      this.companyService.update(this.company).subscribe(
+        (data) => {
+          this.companyService.showMessage(`Empresa alterada com sucesso!`);
+          this.reloadNavService.update();
+          this.reloadService.reloadParent();
+        },
+        (error) => {
+          this.companyService.showMessage(`Ocorreu um erro ao tentar alterar!`);
+        }
+      );
     } else if (this.companyService.isDelete) {
       this.companyService
-        .delete(this.company.id as string)
+        .delete(this.company._id as string)
         .subscribe((company) => {
           this.companyService.showMessage('Empresa excluida!');
+          this.reloadNavService.update();
+          this.reloadService.reloadParent();
         });
     }
+    this.cancel();
   }
 
   cancel(): void {

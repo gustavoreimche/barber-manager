@@ -47,29 +47,36 @@ export class ClientFormComponent {
     });
   }
 
-  submit(): void {
+  submit(event: Event): void {
+    event.preventDefault();
     if (!this.clientService.isEdit && !this.clientService.isDelete) {
-      this.client.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
-      console.log(this.client.address);
-      this.client.phone = this.clientService.formatPhoneNumber(
-        this.client.phone as string
-      );
+      if (this.logradouro !== '') {
+        this.client.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
+        console.log(this.client.address);
+      }
+      if (this.client.phone !== '') {
+        this.client.phone = this.clientService.formatPhoneNumber(
+          this.client.phone as string
+        );
+      }
       this.clientService.create(this.client).subscribe((client) => {
         this.clientService.showMessage(
-          `Empresa: ${client.name} criada com sucesso!`
+          `Cliente: ${client.name} criada com sucesso!`
         );
+        this.reloadService.reloadParent();
       });
     } else if (this.clientService.isEdit && !this.clientService.isDelete) {
       this.clientService.update(this.client).subscribe((client) => {
-        this.clientService.showMessage(
-          `Cliente: ${client.name} alterada com sucesso!`
-        );
+        this.clientService.showMessage(`Cliente alterado com sucesso!`);
+        this.reloadService.reloadParent();
       });
     } else if (this.clientService.isDelete) {
-      this.clientService.delete(this.client.id as string).subscribe(() => {
+      this.clientService.delete(this.client._id as string).subscribe(() => {
         this.clientService.showMessage('Cliente excluido!');
       });
+      this.reloadService.reloadParent();
     }
+    this.cancel();
   }
 
   cancel(): void {
@@ -84,9 +91,8 @@ export class ClientFormComponent {
       address: '',
       phone: '',
       debit: 0,
-      num: 0,
       pg: '',
-      squad: '',
+      esqd: '',
     };
     this.reloadService.reloadParent();
   }

@@ -2,7 +2,7 @@
   <h2>Empresas do Usuário</h2>
   <ul>
     <li *ngFor="let company of companies">
-      <button mat-button (click)="this.switchCompany(company.id !== undefined ? company.id : '')">
+      <button mat-button (click)="this.switchCompany(company._id !== undefined ? company._id : '')">
         {{ company.name }}
       </button>
     </li>

@@ -1,7 +1,7 @@
 export interface Cost {
-  id?: string;
+  _id?: string;
   idCompany: string;
   value: number;
   description: string;
-  date: Date;
+  costDate: Date;
 }

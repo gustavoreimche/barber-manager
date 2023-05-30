@@ -1,11 +1,11 @@
 export interface Client {
-  id?: string;
+  _id?: string;
   idCompany?: string;
   name: string;
-  phone?: string | null;
+  phone?: string;
   address?: string;
-  debit?: number | null;
+  debit?: number;
   num?: number | null;
   pg?: string;
-  squad?: string;
+  esqd?: string;
 }

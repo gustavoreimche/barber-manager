@@ -20,13 +20,16 @@ export class ClientReadComponent implements OnInit {
     this.clientService.load().subscribe((clients: Client[]) => {
       this.clients = clients;
       this.clients.map((client) => {
-        if (client.pg !== undefined) {
+        if (client.num !== undefined) {
+          client.name = `${client.pg} ${client.num} ${client.name}`;
+        } else if (client.pg !== undefined) {
           client.name = `${client.pg} ${client.name}`;
-          if (client.num !== undefined) {
-            client.name = `${client.pg} ${client.num} ${client.name}`;
-          }
         }
       });
+    });
+
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.reload();
     });
 
     this.breakpointObserver
@@ -41,6 +44,19 @@ export class ClientReadComponent implements OnInit {
 
   displayedColumns = ['name', 'address', 'phone', 'action'];
   displayedColumnsMobile = ['name', 'action'];
+
+  reload(): void {
+    this.clientService.load().subscribe((clients: Client[]) => {
+      this.clients = clients;
+      this.clients.map((client) => {
+        if (client.num !== undefined) {
+          client.name = `${client.pg} ${client.num} ${client.name}`;
+        } else if (client.pg !== undefined) {
+          client.name = `${client.pg} ${client.name}`;
+        }
+      });
+    });
+  }
 
   edit(id: string): void {
     this.clientService.isDelete = false;

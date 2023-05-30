@@ -26,19 +26,22 @@ export class CostService {
   }
 
   create(cost: Cost): Observable<Cost> {
-    return this.http.post<Cost>(this.url, cost);
+    const idCompany = localStorage.getItem('idCompany');
+    return this.http.post<Cost>(this.url + '/' + idCompany, cost);
   }
 
   update(cost: Cost): Observable<Cost> {
-    return this.http.put<Cost>(`${this.url}/${cost.id}`, cost);
+    return this.http.put<Cost>(`${this.url}/${cost._id}`, cost);
   }
 
   getById(id: string): Observable<Cost> {
+    console.log(id);
     return this.http.get<Cost>(`${this.url}/${id}`);
   }
 
   getAllCosts(): Observable<Cost[]> {
-    return this.http.get<Cost[]>(this.url);
+    const idCompanys = localStorage.getItem('idCompany');
+    return this.http.get<Cost[]>(this.url + '/idCompany/' + idCompanys);
   }
 
   delete(id: string): Observable<Cost> {

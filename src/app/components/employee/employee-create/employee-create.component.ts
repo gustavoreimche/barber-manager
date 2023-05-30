@@ -20,7 +20,7 @@ export class EmployeeCreateComponent {
     password: '',
     admin: false,
     employee: false,
-    idCompanys: [],
+    idCompanys: [localStorage.getItem('idCompany') as string],
   };
 
   emailControl = new FormControl('', [Validators.required, Validators.email]);

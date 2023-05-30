@@ -6,59 +6,27 @@
     <br />
     <mat-form-field>
       <mat-label>Descrição</mat-label>
-      <input
-        matInput
-        type="text"
-        [(ngModel)]="cost.description"
-        name="description"
-        required
-      />
+      <input matInput type="text" [(ngModel)]="cost.description" name="description" required />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Valor</mat-label>
-      <input
-        matInput
-        type="number"
-        [(ngModel)]="cost.value"
-        name="value"
-        required
-      />
+      <input matInput type="number" [(ngModel)]="cost.value" name="value" required />
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Data</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        required
-        [(ngModel)]="cost.date"
-        name="date"
-      />
+      <input matInput [matDatepicker]="picker" required [(ngModel)]="cost.costDate" name="date" />
       <mat-hint>DD/MM/YYYY</mat-hint>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <br />
     <div class="actions">
-      <button
-        mat-raised-button
-        color="accent"
-        class="button-cadastro"
-        type="submit"
-      >
+      <button mat-raised-button color="accent" class="button-cadastro" type="submit">
         ATUALIZAR
       </button>
-      <button
-        mat-raised-button
-        color="warn"
-        class="button-canel"
-        type="button"
-        (click)="cancel()"
-      >
+      <button mat-raised-button color="warn" class="button-canel" type="button" (click)="cancel()">
         CANCELAR
       </button>
     </div>

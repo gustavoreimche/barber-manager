@@ -1,5 +1,5 @@
 export interface User {
-  id?: string;
+  _id?: string;
   idCompanys?: Array<string>;
   name?: string;
   email: string;

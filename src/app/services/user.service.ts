@@ -22,19 +22,24 @@ export class UserService {
   }
 
   load(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+    return this.http.get<User[]>(
+      this.url + '/' + localStorage.getItem('idCompany')
+    );
   }
 
   getByIdCompany(idCompanys: string): Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}?idCompanys_like=${idCompanys}`);
+    return this.http.get<User[]>(
+      this.url + '/' + localStorage.getItem('idCompany')
+    );
   }
 
   create(employee: User): Observable<User> {
+    console.log(employee);
     return this.http.post<User>(this.url, employee);
   }
 
   update(employee: User): Observable<User> {
-    return this.http.put<User>(`${this.url}/${employee.id}`, employee);
+    return this.http.put<User>(`${this.url}/${employee._id}`, employee);
   }
 
   getById(id: string): Observable<User> {
@@ -45,21 +50,7 @@ export class UserService {
     return this.http.delete<User>(`${this.url}/${id}`);
   }
 
-  login(email: string, password: string): Observable<User[]> {
-    return this.http.get<User[]>(this.url, {
-      params: {
-        email,
-        password,
-      },
-    });
-  }
-
   formatPhoneNumber(phone: string): string {
     return `${phone.slice(0, 2)}-${phone.slice(2, 7)}-${phone.slice(7)}`;
-  }
-
-  getCompaniesByIds(companyIds: string[]): Observable<User[]> {
-    const params = companyIds.map((id) => `idCompanys_like=${id}`).join('&');
-    return this.http.get<User[]>(`${this.url}?${params}`);
   }
 }

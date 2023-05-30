@@ -11,11 +11,11 @@ import { ReloadService } from 'src/app/services/reload.service';
 })
 export class CostDeleteComponent implements OnInit {
   cost: Cost = {
-    id: '',
+    _id: '',
     idCompany: '',
     value: 0,
     description: '',
-    date: new Date(),
+    costDate: new Date(),
   };
 
   constructor(
@@ -40,7 +40,7 @@ export class CostDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.costService.delete(this.cost.id as string).subscribe(() => {
+    this.costService.delete(this.cost._id as string).subscribe(() => {
       this.costService.showMessage('Custo excluído!');
     });
     this.costService.isDelete = false;

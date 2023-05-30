@@ -31,6 +31,16 @@ export class CompanyReadComponent implements OnInit {
       .subscribe((result) => {
         this.isMobile = result.matches;
       });
+
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.reload();
+    });
+  }
+
+  reload(): void {
+    this.companyService.load().subscribe((compays) => {
+      this.companys = compays;
+    });
   }
 
   //quando clicar no edit vai chamar o service e epgar company pelo id

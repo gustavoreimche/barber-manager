@@ -52,11 +52,11 @@ export class CostReadComponent implements OnInit {
     this.costService.getAllCosts().subscribe(
       (costs: Cost[]) => {
         this.balanceService.costs = costs.filter((cost) => {
-          const costDate = new Date(cost.date);
+          const costDate = new Date(cost.costDate);
           return costDate.getMonth() === this.balanceService.actualMonth;
         });
         this.dataSource.data = costs.filter((cost) => {
-          const costDate = new Date(cost.date);
+          const costDate = new Date(cost.costDate);
           return costDate.getMonth() === this.balanceService.actualMonth;
         });
       },

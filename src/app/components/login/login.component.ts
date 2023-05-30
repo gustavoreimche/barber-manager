@@ -27,25 +27,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.userService
+    this.authService
       .login(this.user.email, this.user.password as string)
-      .subscribe((data) => {
-        if (data[0].id) {
-          this.authService.setToken('123abc');
-          localStorage.setItem('idUser', data[0].id as string);
+      .subscribe((isLogged) => {
+        if (isLogged) {
+          this.userService.showMessage(`Welcome`);
+          localStorage.setItem('idCompany', '64761541f5e4d91bab04f5eb');
           this.reloadNavService.update();
           this.router.navigateByUrl('/');
         }
       });
-
-    // const isLogged = this.authService.login(
-    //   this.user.name as string,
-    //   this.user.password as string
-    // );
-
-    // if (isLogged) {
-    //   this.reloadNavService.update();
-    //   this.router.navigateByUrl('/');
-    // }
   }
 }
