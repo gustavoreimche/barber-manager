@@ -23,7 +23,7 @@ export class EmployeeReadComponent {
 
   ngOnInit(): void {
     this.userService
-      .getByIdCompany(localStorage.getItem('idCompany') as string)
+      .getByIdCompany()
       .subscribe((users) => {
         this.employees = users;
       });
@@ -39,7 +39,7 @@ export class EmployeeReadComponent {
 
   reload(): void {
     this.userService
-      .getByIdCompany(localStorage.getItem('idCompany') as string)
+      .getByIdCompany()
       .subscribe((users) => {
         this.employees = users;
       });

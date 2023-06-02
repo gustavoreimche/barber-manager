@@ -20,6 +20,12 @@
   flex-wrap: wrap;
   align-items: center;
 }
+.row-arrows {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
 .mb-20 {
   margin-bottom: 20px;
@@ -165,6 +171,7 @@ p {
 
   .table-card {
     margin-bottom: 20px;
+    width: -webkit-fill-available;
   }
 
   .row {

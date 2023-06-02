@@ -13,10 +13,17 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthGuardLogin } from './guards/auth-login.guard';
 import { ClientComponent } from './components/client/client-home/client.component';
 import { HomeComponent } from './components/home/home/home.component';
+import { SelectedCompanyGuard } from './guards/selected-company.guard';
+import { ServiceExecutedHomeComponent } from './components/service-executed/service-executed-home/service-executed-home.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: ServiceExecutedHomeComponent,
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
+  },
+  {
+    path: 'selectcompany',
     component: HomeComponent,
     canActivate: [AuthGuardLogin],
   },
@@ -28,42 +35,42 @@ const routes: Routes = [
   {
     path: 'client',
     component: ClientComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'service',
     component: ServicoComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'balance',
     component: BalanceComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'cost',
     component: CostComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'employee',
     component: EmployeeComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'employee/create',
     component: EmployeeCreateComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'employee/update/:id',
     component: EmployeeUpdateComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'employee/delete/:id',
     component: EmployeeDeleteComponent,
-    canActivate: [AuthGuardLogin],
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
     path: 'login',

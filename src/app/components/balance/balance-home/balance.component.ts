@@ -57,12 +57,20 @@ export class BalanceComponent implements OnInit {
   }
 
   previus(): void {
-    this.balanceService.actualMonth = this.balanceService.actualMonth - 1;
+    if (this.balanceService.actualMonth == 0) {
+      this.balanceService.actualMonth = 11;
+    } else {
+      this.balanceService.actualMonth = this.balanceService.actualMonth - 1;
+    }
     this.reload();
   }
 
   next(): void {
-    this.balanceService.actualMonth = this.balanceService.actualMonth + 1;
+    if (this.balanceService.actualMonth == 11) {
+      this.balanceService.actualMonth = 0;
+    } else {
+      this.balanceService.actualMonth = this.balanceService.actualMonth + 1;
+    }
     this.reload();
   }
 }

@@ -6,6 +6,7 @@ export interface AuthModel {
     name: string;
     id: string;
     idCopmanys: Array<string>;
+    admin?: string;
   };
   token: string;
   refreshToken: string;

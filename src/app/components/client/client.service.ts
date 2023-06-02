@@ -35,7 +35,7 @@ export class ClientService {
   squad = ['1º Esqd', '2º Esqd', '3º Esqd', 'Esqd C Ap', 'EM'];
   pg = [
     'Cel',
-    'TC',
+    'Ten Cel',
     'Maj',
     'Cap',
     '1º Ten',

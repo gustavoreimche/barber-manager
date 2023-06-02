@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Client } from '../client.model';
 import { ClientService } from '../client.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ReloadService } from 'src/app/services/reload.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-client-read',
@@ -10,6 +12,14 @@ import { ReloadService } from 'src/app/services/reload.service';
   styleUrls: ['./client-read.component.scss'],
 })
 export class ClientReadComponent implements OnInit {
+  clients: Client[] = [];
+  isMobile = false;
+  isLoading = false;
+
+  dataSource!: MatTableDataSource<Client>;
+
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(
     private clientService: ClientService,
     private breakpointObserver: BreakpointObserver,
@@ -17,15 +27,11 @@ export class ClientReadComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.clientService.load().subscribe((clients: Client[]) => {
       this.clients = clients;
-      this.clients.map((client) => {
-        if (client.num !== undefined) {
-          client.name = `${client.pg} ${client.num} ${client.name}`;
-        } else if (client.pg !== undefined) {
-          client.name = `${client.pg} ${client.name}`;
-        }
-      });
+      this.dataSource = new MatTableDataSource(clients);
+      this.dataSource.sort = this.sort;
     });
 
     this.reloadService.reloadParent$.subscribe(() => {
@@ -37,25 +43,23 @@ export class ClientReadComponent implements OnInit {
       .subscribe((result) => {
         this.isMobile = result.matches;
       });
+    this.isLoading = false;
   }
 
-  clients: Client[] = [];
-  isMobile = false;
-
-  displayedColumns = ['name', 'address', 'phone', 'action'];
-  displayedColumnsMobile = ['name', 'action'];
+  displayedColumns = ['pg', 'name', 'esqd', 'address', 'phone', 'action'];
+  displayedColumnsMobile = ['pg', 'name', 'action'];
 
   reload(): void {
     this.clientService.load().subscribe((clients: Client[]) => {
       this.clients = clients;
-      this.clients.map((client) => {
-        if (client.num !== undefined) {
-          client.name = `${client.pg} ${client.num} ${client.name}`;
-        } else if (client.pg !== undefined) {
-          client.name = `${client.pg} ${client.name}`;
-        }
-      });
+      this.dataSource = new MatTableDataSource(clients);
+      this.dataSource.sort = this.sort;
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   edit(id: string): void {

@@ -71,13 +71,18 @@ export class CompanyFormComponent {
       this.company.phone = this.companyService.formatPhoneNumber(
         this.company.phone
       );
-      this.companyService.create(this.company).subscribe((company) => {
-        this.companyService.showMessage(
-          `Empresa: ${company.name} criada com sucesso!`
-        );
-        this.reloadService.reloadParent();
-        this.reloadNavService.update();
-      });
+      this.companyService.create(this.company).subscribe(
+        (company) => {
+          this.companyService.showMessage(
+            `Empresa: ${company.name} criada com sucesso!`
+          );
+          this.reloadService.reloadParent();
+          this.reloadNavService.update();
+        },
+        (error) => {
+          this.companyService.showMessage(error.error.message);
+        }
+      );
     } else if (this.companyService.isEdit && !this.companyService.isDelete) {
       this.companyService.update(this.company).subscribe(
         (data) => {
@@ -86,17 +91,20 @@ export class CompanyFormComponent {
           this.reloadService.reloadParent();
         },
         (error) => {
-          this.companyService.showMessage(`Ocorreu um erro ao tentar alterar!`);
+          this.companyService.showMessage(error.error.message);
         }
       );
     } else if (this.companyService.isDelete) {
-      this.companyService
-        .delete(this.company._id as string)
-        .subscribe((company) => {
+      this.companyService.delete(this.company._id as string).subscribe(
+        (company) => {
           this.companyService.showMessage('Empresa excluida!');
           this.reloadNavService.update();
           this.reloadService.reloadParent();
-        });
+        },
+        (error) => {
+          this.companyService.showMessage(error.error.message);
+        }
+      );
     }
     this.cancel();
   }

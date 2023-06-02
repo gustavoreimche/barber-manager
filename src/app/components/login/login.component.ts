@@ -32,9 +32,8 @@ export class LoginComponent implements OnInit {
       .subscribe((isLogged) => {
         if (isLogged) {
           this.userService.showMessage(`Welcome`);
-          localStorage.setItem('idCompany', '64761541f5e4d91bab04f5eb');
           this.reloadNavService.update();
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/selectcompany');
         }
       });
   }

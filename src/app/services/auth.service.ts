@@ -24,6 +24,8 @@ export class AuthService {
           if (data) {
             this.setToken(data.token);
             localStorage.setItem('idUser', data.user.id as string);
+            console.log(data);
+            localStorage.setItem('isAdmin', data.user.admin as string);
             return true;
           }
           return false;

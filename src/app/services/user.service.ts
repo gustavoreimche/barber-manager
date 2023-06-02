@@ -27,9 +27,9 @@ export class UserService {
     );
   }
 
-  getByIdCompany(idCompanys: string): Observable<User[]> {
+  getByIdCompany(): Observable<User[]> {
     return this.http.get<User[]>(
-      this.url + '/' + localStorage.getItem('idCompany')
+      this.url + '/company/' + localStorage.getItem('idCompany')
     );
   }
 

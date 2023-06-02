@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 
 //Angular Material Components
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -44,7 +45,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { NavService } from './components/template/nav/nav.service';
 import { CompanyComponent } from './components/company/company/company.component';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanyReadComponent } from './components/company/company-read/company-read.component';
 import { ServicoComponent } from './components/servicos/servico/servico.component';
@@ -67,7 +68,7 @@ import { EmployeeCreateComponent } from './components/employee/employee-create/e
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
 import { EmployeeReadComponent } from './components/employee/employee-read/employee-read.component';
 import { EmployeeUpdateComponent } from './components/employee/employee-update/employee-update.component';
-import { registerLocaleData } from '@angular/common';
+import { DatePipe, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -83,6 +84,11 @@ import { EntryComponent } from './components/balance/entry/entry/entry.component
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { AuthService } from './services/auth.service';
+import { ServiceExecutedHomeComponent } from './components/service-executed/service-executed-home/service-executed-home.component';
+import { ServiceExecutedCreateComponent } from './components/service-executed/service-executed-create/service-executed-create.component';
+import { ServiceExecutedReadComponent } from './components/service-executed/service-executed-read/service-executed-read.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogUpdateComponent } from './components/service-executed/dialog-update/dialog-update.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -121,6 +127,10 @@ registerLocaleData(localePt);
     EntryReadComponent,
     EntryUpdateComponent,
     BalanceComponent,
+    ServiceExecutedHomeComponent,
+    ServiceExecutedCreateComponent,
+    ServiceExecutedReadComponent,
+    DialogUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -143,6 +153,9 @@ registerLocaleData(localePt);
     MatNativeDateModule,
     // Material
     MatBadgeModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatAutocompleteModule,
     MatMenuModule,
     MatBottomSheetModule,
     MatButtonModule,
@@ -166,6 +179,7 @@ registerLocaleData(localePt);
   providers: [
     NavService,
     AuthService,
+    DatePipe,
     { provide: LOCALE_ID, useValue: 'pt-BR' },
     {
       provide: HTTP_INTERCEPTORS,
