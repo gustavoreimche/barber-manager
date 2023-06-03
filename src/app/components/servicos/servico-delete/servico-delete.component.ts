@@ -39,12 +39,15 @@ export class ServicoDeleteComponent {
   }
 
   submit(): void {
-    this.servicoService
-      .delete(this.servico._id as string)
-      .subscribe((servico) => {
+    this.servicoService.delete(this.servico._id as string).subscribe(
+      (servico) => {
         this.servicoService.showMessage(`Serviço excluído com sucesso!`);
         this.reloadService.reloadParent();
-      });
+      },
+      (error) => {
+        this.servicoService.showMessage(error.error.message);
+      }
+    );
     this.cancel();
   }
 

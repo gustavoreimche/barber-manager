@@ -36,11 +36,14 @@ export class EmployeeUpdateComponent {
     this.user.phone = this.userService.formatPhoneNumber(
       this.user.phone as string
     );
-    this.userService.update(this.user).subscribe((employee) => {
-      this.userService.showMessage(
-        `Empresa: ${employee.name} alterada com sucesso!`
-      );
-    });
+    this.userService.update(this.user).subscribe(
+      (employee) => {
+        this.userService.showMessage(`Empresa alterada com sucesso!`);
+      },
+      (error) => {
+        this.userService.showMessage(error.error.message);
+      }
+    );
     this.router.navigate(['/employee']);
   }
 

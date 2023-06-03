@@ -22,12 +22,17 @@ export class ServicoCreateComponent {
   };
 
   submit(): void {
-    this.servicoService.create(this.servico).subscribe((servico) => {
-      this.servicoService.showMessage(
-        `Serviço: ${servico.name} criada com sucesso!`
-      );
-      this.reloadService.reloadParent();
-    });
+    this.servicoService.create(this.servico).subscribe(
+      (servico) => {
+        this.servicoService.showMessage(
+          `Serviço: ${servico.name} criada com sucesso!`
+        );
+        this.reloadService.reloadParent();
+      },
+      (error) => {
+        this.servicoService.showMessage(error.error.message);
+      }
+    );
   }
 
   cancel(): void {

@@ -78,14 +78,24 @@ export class ClientFormComponent {
           this.client.phone as string
         );
       }
-      this.clientService.update(this.client).subscribe((client) => {
-        this.clientService.showMessage(`Cliente alterado com sucesso!`);
-        this.reloadService.reloadParent();
-      });
+      this.clientService.update(this.client).subscribe(
+        (client) => {
+          this.clientService.showMessage(`Cliente alterado com sucesso!`);
+          this.reloadService.reloadParent();
+        },
+        (error) => {
+          this.clientService.showMessage(error.error.message);
+        }
+      );
     } else if (this.clientService.isDelete) {
-      this.clientService.delete(this.client._id as string).subscribe(() => {
-        this.clientService.showMessage('Cliente excluido!');
-      });
+      this.clientService.delete(this.client._id as string).subscribe(
+        () => {
+          this.clientService.showMessage('Cliente excluido!');
+        },
+        (error) => {
+          this.clientService.showMessage(error.error.message);
+        }
+      );
       this.reloadService.reloadParent();
     }
     this.cancel();

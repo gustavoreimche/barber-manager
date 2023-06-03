@@ -24,13 +24,18 @@ export class CostCreateComponent {
   };
 
   submit(): void {
-    this.costService.create(this.cost).subscribe((cost) => {
-      this.costService.showMessage(
-        `Custo: ${cost.description} criado com sucesso!`
-      );
-      this.reloadService.reloadParent();
-      this.costService.isCreate = false;
-    });
+    this.costService.create(this.cost).subscribe(
+      (cost) => {
+        this.costService.showMessage(
+          `Custo: ${cost.description} criado com sucesso!`
+        );
+        this.reloadService.reloadParent();
+        this.costService.isCreate = false;
+      },
+      (error) => {
+        this.costService.showMessage(error.error.message);
+      }
+    );
   }
 
   cancel(): void {

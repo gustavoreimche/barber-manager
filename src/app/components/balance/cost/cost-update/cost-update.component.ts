@@ -44,11 +44,16 @@ export class CostUpdateComponent implements OnInit {
   }
 
   submit(): void {
-    this.costService.update(this.cost).subscribe(() => {
-      this.costService.showMessage('Custo atualizado com sucesso!');
-      this.reloadService.reloadParent();
-      this.costService.isUpdate = false;
-    });
+    this.costService.update(this.cost).subscribe(
+      () => {
+        this.costService.showMessage('Custo atualizado com sucesso!');
+        this.reloadService.reloadParent();
+        this.costService.isUpdate = false;
+      },
+      (error) => {
+        this.costService.showMessage(error.error.message);
+      }
+    );
   }
 
   cancel(): void {

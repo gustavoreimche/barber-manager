@@ -39,9 +39,14 @@ export class CostDeleteComponent implements OnInit {
   }
 
   delete(): void {
-    this.costService.delete(this.cost._id as string).subscribe(() => {
-      this.costService.showMessage('Custo excluído!');
-    });
+    this.costService.delete(this.cost._id as string).subscribe(
+      () => {
+        this.costService.showMessage('Custo excluído!');
+      },
+      (error) => {
+        this.costService.showMessage(error.error.message);
+      }
+    );
     this.costService.isDelete = false;
     this.reloadService.reloadParent();
   }

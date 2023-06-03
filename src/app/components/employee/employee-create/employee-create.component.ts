@@ -30,11 +30,16 @@ export class EmployeeCreateComponent {
     this.user.phone = this.userService.formatPhoneNumber(
       this.user.phone as string
     );
-    this.userService.create(this.user).subscribe((employee) => {
-      this.userService.showMessage(
-        `Funcionário: ${employee.name} criado com sucesso!`
-      );
-    });
+    this.userService.create(this.user).subscribe(
+      (employee) => {
+        this.userService.showMessage(
+          `Funcionário: ${employee.name} criado com sucesso!`
+        );
+      },
+      (error) => {
+        this.userService.showMessage(error.error.message);
+      }
+    );
     this.router.navigate(['/employee']);
   }
 

@@ -119,10 +119,15 @@ export class ClientReportComponent {
   delete(id: string): void {
     const r = confirm(`Tem certeza que deseja excluir?`);
     if (r) {
-      this.serviceExecuteService.deleteById(id).subscribe(() => {
-        this.serviceExecuteService.showMessage('Serviço deletado!');
-        this.reloadService.reloadParent();
-      });
+      this.serviceExecuteService.deleteById(id).subscribe(
+        () => {
+          this.serviceExecuteService.showMessage('Serviço deletado!');
+          this.reloadService.reloadParent();
+        },
+        (error) => {
+          this.serviceExecuteService.showMessage(error.error.message);
+        }
+      );
     }
   }
 

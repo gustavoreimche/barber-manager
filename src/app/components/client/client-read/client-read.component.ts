@@ -77,7 +77,9 @@ export class ClientReadComponent implements OnInit {
       });
       saveAs(excelBlob, 'clientes.xlsx');
     } else {
-      console.log('Nenhum objeto com débito maior que 0 encontrado.');
+      this.clientService.showMessage(
+        'Nenhum cliente com débito maior que 0 encontrado.'
+      );
     }
   }
 
@@ -194,7 +196,9 @@ export class ClientReadComponent implements OnInit {
       const url = URL.createObjectURL(blob);
       window.open(url);
     } else {
-      console.log('Nenhum objeto com débito maior que 0 encontrado.');
+      this.clientService.showMessage(
+        'Nenhum cliente com débito maior que 0 encontrado.'
+      );
     }
   }
 

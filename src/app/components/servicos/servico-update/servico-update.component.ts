@@ -40,10 +40,15 @@ export class ServicoUpdateComponent {
   }
 
   submit(): void {
-    this.servicoService.update(this.servico).subscribe((servico) => {
-      this.servicoService.showMessage(`Serviço atualizado com sucesso!`);
-      this.reloadService.reloadParent();
-    });
+    this.servicoService.update(this.servico).subscribe(
+      (servico) => {
+        this.servicoService.showMessage(`Serviço atualizado com sucesso!`);
+        this.reloadService.reloadParent();
+      },
+      (error) => {
+        this.servicoService.showMessage(error.error.message);
+      }
+    );
   }
 
   cancel(): void {

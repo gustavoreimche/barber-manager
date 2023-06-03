@@ -51,11 +51,14 @@ export class DialogUpdateComponent {
   }
 
   update(): void {
-    this.serviceExecutedService
-      .updateById(this.serviceExecuted)
-      .subscribe(() => {
+    this.serviceExecutedService.updateById(this.serviceExecuted).subscribe(
+      () => {
         this.dialogRef.close();
         this.reloadService.reloadParent();
-      });
+      },
+      (error) => {
+        this.serviceExecutedService.showMessage(error.error.message);
+      }
+    );
   }
 }
