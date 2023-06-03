@@ -55,7 +55,7 @@ import { ServicoDeleteComponent } from './components/servicos/servico-delete/ser
 import { ServicoReadComponent } from './components/servicos/servico-read/servico-read.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
-import { ClientComponent } from './components/client/client-home/client.component';
+import { ClientHomeComponent } from './components/client/client-home/client.component';
 import { ClientReadComponent } from './components/client/client-read/client-read.component';
 import { CostDeleteComponent } from './components/balance/cost/cost-delete/cost-delete.component';
 import { CostUpdateComponent } from './components/balance/cost/cost-update/cost-update.component';
@@ -89,6 +89,8 @@ import { ServiceExecutedCreateComponent } from './components/service-executed/se
 import { ServiceExecutedReadComponent } from './components/service-executed/service-executed-read/service-executed-read.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogUpdateComponent } from './components/service-executed/dialog-update/dialog-update.component';
+import { ClientReportComponent } from './components/reporting/client-report/client-report.component';
+import { ReplaceTextPipe } from './pipes/replacetext.pipe';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -109,7 +111,7 @@ registerLocaleData(localePt);
     CostDeleteComponent,
     CostUpdateComponent,
     CostComponent,
-    ClientComponent,
+    ClientHomeComponent,
     ClientReadComponent,
     BalanceComponent,
     EmployeeComponent,
@@ -131,9 +133,12 @@ registerLocaleData(localePt);
     ServiceExecutedCreateComponent,
     ServiceExecutedReadComponent,
     DialogUpdateComponent,
+    ClientReportComponent,
+    ReplaceTextPipe,
   ],
   imports: [
     BrowserModule,
+
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
