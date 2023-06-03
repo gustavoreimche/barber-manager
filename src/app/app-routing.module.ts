@@ -11,10 +11,11 @@ import { EmployeeUpdateComponent } from './components/employee/employee-update/e
 import { EmployeeDeleteComponent } from './components/employee/employee-delete/employee-delete.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardLogin } from './guards/auth-login.guard';
-import { ClientComponent } from './components/client/client-home/client.component';
+import { ClientHomeComponent } from './components/client/client-home/client.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { SelectedCompanyGuard } from './guards/selected-company.guard';
 import { ServiceExecutedHomeComponent } from './components/service-executed/service-executed-home/service-executed-home.component';
+import { ClientReportComponent } from './components/reporting/client-report/client-report.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: 'client',
-    component: ClientComponent,
+    component: ClientHomeComponent,
     canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'cost',
     component: CostComponent,
+    canActivate: [SelectedCompanyGuard, AuthGuardLogin],
+  },
+  {
+    path: 'reporting/clients',
+    component: ClientReportComponent,
     canActivate: [SelectedCompanyGuard, AuthGuardLogin],
   },
   {
