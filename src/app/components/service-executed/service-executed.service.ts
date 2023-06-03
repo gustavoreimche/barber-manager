@@ -38,14 +38,25 @@ export class ServiceExecutedService {
     return this.http.get<ServiceExecuted>(this.url + '/' + id);
   }
 
+  getByClient(id: string): Observable<ServiceExecuted[]> {
+    return this.http.get<ServiceExecuted[]>(this.url + '/client/' + id);
+  }
+
   updateById(
     serviceExecuted: ServiceExecutedCreate
   ): Observable<ServiceExecutedCreate> {
-    console.log(serviceExecuted);
     return this.http.put<ServiceExecutedCreate>(
       this.url + serviceExecuted._id,
       serviceExecuted
     );
+  }
+
+  getRowClass(row: any): string {
+    if (row.value > 100) {
+      return 'red';
+    } else {
+      return '';
+    }
   }
 
   deleteById(id: string): Observable<ServiceExecuted> {

@@ -50,7 +50,6 @@ export class CompanyService {
   }
 
   update(company: Company): Observable<Company> {
-    console.log(company);
     return this.http.put<Company>(`${this.url}/${company._id}`, company);
   }
 
@@ -70,6 +69,10 @@ export class CompanyService {
     //   return throwError('Não é possível deletar uma empresa selecionada');
     // }
     return this.http.delete<Company>(`${this.url}/${id}`);
+  }
+
+  unformatPhoneNumber(phone: string): string {
+    return phone.replace(/\D/g, '');
   }
 
   formatPhoneNumber(phone: string): string {

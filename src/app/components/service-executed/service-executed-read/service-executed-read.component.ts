@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ServiceExecuted } from '../serviceExecuted.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ReloadService } from 'src/app/services/reload.service';
@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogUpdateComponent } from '../dialog-update/dialog-update.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ServiceExecutedCreate } from '../serviceExecutedCreate.model';
+import { MatPaginator } from '@angular/material/paginator';
 export interface DialogData {
   animal: string;
   name: string;
@@ -32,6 +33,7 @@ export class ServiceExecutedReadComponent {
   displayedColumnsMobile = ['name', 'value', 'paymentMethod', 'action'];
 
   dataSource!: MatTableDataSource<ServiceExecuted>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -51,34 +53,47 @@ export class ServiceExecutedReadComponent {
       });
 
     this.serviceExecuteService.load().subscribe((serviceExecuteds) => {
-      this.servicesExecuteds = serviceExecuteds;
-      this.dataSource = new MatTableDataSource(serviceExecuteds);
+      this.servicesExecuteds = serviceExecuteds.sort((a, b) => {
+        const dateA = new Date(a.serviceDate);
+        const dateB = new Date(b.serviceDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+      this.dataSource = new MatTableDataSource(this.servicesExecuteds);
+      this.dataSource.paginator = this.paginator;
     });
 
     this.reloadService.reloadParent$.subscribe(() => {
-      this.ngOnInit();
+      this.reload();
+    });
+  }
+
+  reload(): void {
+    this.serviceExecuteService.load().subscribe((serviceExecuteds) => {
+      this.servicesExecuteds = serviceExecuteds.sort((a, b) => {
+        const dateA = new Date(a.serviceDate);
+        const dateB = new Date(b.serviceDate);
+        return dateB.getTime() - dateA.getTime();
+      });
+      this.dataSource = new MatTableDataSource(this.servicesExecuteds);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   openDialog(id: string): void {
-    let serviceExecuted: ServiceExecutedCreate;
+    let serviceExecuted: ServiceExecuted;
     this.serviceExecuteService.getById(id).subscribe((service) => {
       serviceExecuted = service;
-      console.log(serviceExecuted);
 
       const dialogRef = this.dialog.open(DialogUpdateComponent, {
         data: {
           paymentMethod: serviceExecuted.paymentMethod,
           paymentDate: serviceExecuted.paymentDate,
-          _id: serviceExecuted._id,
-          idClients: serviceExecuted.idClients,
+          _id: serviceExecuted.id,
+          idClients: serviceExecuted.client?._id,
         },
       });
 
-      dialogRef.afterClosed().subscribe((result) => {
-        console.log('The dialog was closed');
-        this.animal = result;
-      });
+      dialogRef.afterClosed().subscribe((result) => {});
     });
   }
 

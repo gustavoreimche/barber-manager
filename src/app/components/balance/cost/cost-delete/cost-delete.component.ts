@@ -34,7 +34,6 @@ export class CostDeleteComponent implements OnInit {
 
   reload() {
     this.costService.getById(this.costService.id).subscribe((cost) => {
-      console.log(cost);
       this.cost = cost;
     });
   }

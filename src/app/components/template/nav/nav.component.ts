@@ -26,7 +26,7 @@ export class NavComponent {
     private navService: NavService,
     private breakpointObserver: BreakpointObserver,
     private reloadNavService: ReloadNavService,
-    private companyService: CompanyService,
+    private companyService: CompanyService
   ) {
     this.isSidenavOpen = !this.breakpointObserver.isMatched(
       Breakpoints.Handset
@@ -51,24 +51,27 @@ export class NavComponent {
     this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
     this.isLogged = !!localStorage.getItem('token');
 
-    this.companyService
-      .getById(localStorage.getItem('idCompany') as string)
-      .subscribe((company) => {
-        this.company = company;
-      });
-
-    this.reloadNavService.update$.subscribe(() => {
-      this.isAdmin = !!localStorage.getItem('isAdmin');
-      this.isLogged = !!localStorage.getItem('token');
+    if (localStorage.getItem('idCompany') !== null) {
       this.companyService
         .getById(localStorage.getItem('idCompany') as string)
         .subscribe((company) => {
           this.company = company;
         });
+    }
+
+    this.reloadNavService.update$.subscribe(() => {
+      this.isAdmin = localStorage.getItem('isAdmin') === 'true' ? true : false;
+      this.isLogged = !!localStorage.getItem('token');
+
+      if (localStorage.getItem('idCompany') !== null) {
+        this.companyService
+          .getById(localStorage.getItem('idCompany') as string)
+          .subscribe((company) => {
+            this.company = company;
+          });
+      }
     });
   }
-
-
 
   toggleSubitem(): void {
     this.isSubitemOpen = !this.isSubitemOpen;

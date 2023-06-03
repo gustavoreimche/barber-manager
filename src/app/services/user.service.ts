@@ -34,7 +34,6 @@ export class UserService {
   }
 
   create(employee: User): Observable<User> {
-    console.log(employee);
     return this.http.post<User>(this.url, employee);
   }
 

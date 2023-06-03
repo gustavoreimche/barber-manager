@@ -8,7 +8,8 @@ export interface ServiceExecuted {
   services?: Servico[];
   user?: User;
   paymentMethod?: string;
-  paymentDate?: Date;
-  serviceDate?: Date;
+  paymentDate: Date;
+  serviceDate: Date;
   value: number;
+  createdAt: Date;
 }

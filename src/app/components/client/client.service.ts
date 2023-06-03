@@ -25,7 +25,7 @@ export class ClientService {
   client: Client = {
     name: '',
     phone: '',
-    idCompany: localStorage.getItem('idCompany') ?? '',
+    idCompanys: localStorage.getItem('idCompany') ?? '',
   };
 
   isEdit = false;
@@ -57,11 +57,7 @@ export class ClientService {
   }
 
   create(client: Client): Observable<Client> {
-    console.log(client);
-    return this.http.post<Client>(
-      this.url + '/' + localStorage.getItem('idCompany'),
-      client
-    );
+    return this.http.post<Client>(this.url, client);
   }
 
   load(): Observable<Client[]> {
@@ -72,6 +68,10 @@ export class ClientService {
 
   getById(id: string): Observable<Client> {
     return this.http.get<Client>(this.url + '/' + id);
+  }
+
+  unformatPhoneNumber(phone: string): string {
+    return phone.replace(/\D/g, '');
   }
 
   formatPhoneNumber(phone: string): string {

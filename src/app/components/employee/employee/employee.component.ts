@@ -10,11 +10,7 @@ import { UserService } from '../../../services/user.service';
 export class EmployeeComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) {}
 
-  ngOnInit(): void {
-    this.userService.load().subscribe((users) => {
-      console.log(users);
-    });
-  }
+  ngOnInit(): void {}
   navigateToEmployeeCreate(): void {
     this.router.navigate(['/employee/create']);
   }

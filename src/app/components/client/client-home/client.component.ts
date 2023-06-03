@@ -6,14 +6,10 @@ import { Router } from '@angular/router';
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.scss'],
 })
-export class ClientComponent {
+export class ClientHomeComponent {
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    // this.companyService.load().subscribe((companys) => {
-    //   console.log(companys);
-    // });
-  }
+  ngOnInit(): void {}
   navigateToClientCreate(): void {
     this.router.navigate(['/client/create']);
   }

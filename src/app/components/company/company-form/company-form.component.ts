@@ -26,7 +26,6 @@ export class CompanyFormComponent {
       if (cep && cep.length === 8) {
         // Verifica se o CEP possui 8 dígitos
         this.cepService.getAddressByCEP(cep).subscribe((data) => {
-          console.log(data);
           this.logradouro = data.logradouro;
           this.bairro = data.bairro;
           this.cep = data.cep;
@@ -45,7 +44,6 @@ export class CompanyFormComponent {
 
   reload(): void {
     this.company = this.companyService.company;
-    console.log(this.company);
   }
 
   company: Company = {
@@ -65,9 +63,7 @@ export class CompanyFormComponent {
     event.preventDefault();
 
     if (!this.companyService.isEdit && !this.companyService.isDelete) {
-      console.log(this.company);
       this.company.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
-      console.log(this.company.address);
       this.company.phone = this.companyService.formatPhoneNumber(
         this.company.phone
       );
@@ -84,6 +80,12 @@ export class CompanyFormComponent {
         }
       );
     } else if (this.companyService.isEdit && !this.companyService.isDelete) {
+      this.company.phone = this.companyService.unformatPhoneNumber(
+        this.company.phone
+      );
+      this.company.phone = this.companyService.formatPhoneNumber(
+        this.company.phone
+      );
       this.companyService.update(this.company).subscribe(
         (data) => {
           this.companyService.showMessage(`Empresa alterada com sucesso!`);

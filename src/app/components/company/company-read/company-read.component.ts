@@ -48,7 +48,6 @@ export class CompanyReadComponent implements OnInit {
     this.companyService.isDelete = false;
     this.companyService.isEdit = true;
     this.companyService.getById(id).subscribe((company) => {
-      console.log(id);
       this.companyService.company = company;
       this.reloadService.reloadParent();
     });
@@ -58,7 +57,6 @@ export class CompanyReadComponent implements OnInit {
     this.companyService.isEdit = true;
     this.companyService.isDelete = true;
     this.companyService.getById(id).subscribe((company) => {
-      console.log(id);
       this.companyService.company = company;
       this.reloadService.reloadParent();
     });

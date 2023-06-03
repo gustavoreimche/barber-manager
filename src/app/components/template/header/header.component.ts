@@ -41,26 +41,28 @@ export class HeaderComponent {
   };
 
   update() {
-    this.companyService.load().subscribe((companies) => {
-      console.log('Loaded companies:', companies);
-      this.companys = companies;
-    });
-    console.log(localStorage.getItem('idCompany'));
+    if (localStorage.getItem('isAdmin') === 'true') {
+      this.companyService.load().subscribe((companies) => {
+        this.companys = companies;
+      });
+    }
     if (localStorage.getItem('idCompany') !== null) {
       this.companyService
         .getById(localStorage.getItem('idCompany') as string)
-        .subscribe((company) => {
-          if (company === null) {
-            this.selectedCompany = {
-              name: '',
-              address: '',
-              phone: '',
-            };
-          } else {
-            this.selectedCompany = company;
-            console.log(this.selectedCompany);
-          }
-        });
+        .subscribe(
+          (company) => {
+            if (company === null) {
+              this.selectedCompany = {
+                name: '',
+                address: '',
+                phone: '',
+              };
+            } else {
+              this.selectedCompany = company;
+            }
+          },
+          (error) => {}
+        );
     }
   }
 
@@ -73,10 +75,8 @@ export class HeaderComponent {
   }
 
   switchCompany(id: string): void {
-    console.log(id);
     this.companyService.getById(id).subscribe((company) => {
       this.selectedCompany = company;
-      console.log(this.selectedCompany);
     });
     localStorage.setItem('idCompany', id);
     this.reloadNavService.update();

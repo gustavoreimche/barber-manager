@@ -29,7 +29,6 @@ export class CostComponent implements OnInit {
   loadCosts(): void {
     this.costService.getAllCosts().subscribe((costs) => {
       this.costs = costs;
-      console.log(this.costs);
     });
   }
 

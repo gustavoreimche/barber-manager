@@ -35,7 +35,6 @@ export class CostService {
   }
 
   getById(id: string): Observable<Cost> {
-    console.log(id);
     return this.http.get<Cost>(`${this.url}/${id}`);
   }
 

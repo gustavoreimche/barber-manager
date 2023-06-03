@@ -58,7 +58,7 @@ export class ServiceExecutedCreateComponent {
   clientFormControl = new FormControl('');
   client: Client = {
     name: '',
-    idCompany: localStorage.getItem('idCompany') || '',
+    idCompanys: localStorage.getItem('idCompany') || '',
   };
   clients: Client[] = [];
   filteredClients!: Observable<Client[]>;
@@ -123,12 +123,25 @@ export class ServiceExecutedCreateComponent {
     });
 
     this.userService.getByIdCompany().subscribe((users) => {
-      console.log(users);
       this.professionals = users;
     });
 
     this.reloadService.reloadParent$.subscribe(() => {
-      this.ngOnInit();
+      this.reload();
+    });
+  }
+
+  reload() {
+    this.clientService.load().subscribe((clients) => {
+      this.clients = clients;
+    });
+
+    this.servicoService.load().subscribe((servicos) => {
+      this.servicos = servicos;
+    });
+
+    this.userService.getByIdCompany().subscribe((users) => {
+      this.professionals = users;
     });
   }
 
@@ -177,14 +190,18 @@ export class ServiceExecutedCreateComponent {
     this.client.name = nomeCliente as string;
 
     // Chamar o serviço para salvar o novo cliente no banco
-    this.clientService.create(this.client).subscribe((result) => {
-      // Lógica após a criação do cliente no banco
-      console.log(result);
-      this.clients.push(result);
-      this.client = result;
-      this.showCreateButton = false;
-      this.serviceExecutedService.showMessage('Cliente criado com sucesso!');
-    });
+    this.clientService.create(this.client).subscribe(
+      (result) => {
+        // Lógica após a criação do cliente no banco
+        this.clients.push(result);
+        this.client = result;
+        this.showCreateButton = false;
+        this.serviceExecutedService.showMessage('Cliente criado com sucesso!');
+      },
+      (error) => {
+        this.serviceExecutedService.showMessage(error.error.message);
+      }
+    );
   }
 
   remove(servico: Servico): void {
@@ -223,17 +240,16 @@ export class ServiceExecutedCreateComponent {
   cancel(): void {}
 
   salvar(event: Event): void {
-    event.preventDefault();
+    // event.preventDefault();
     this.serviceExecuted.idClients = this.client._id;
     this.selectedServicos.map((servico) => {
       this.serviceExecuted.idServices?.push(servico._id as string);
     });
     this.serviceExecuted.idUsers = this.professional.id;
 
-    console.log(this.serviceExecuted);
     this.serviceExecutedService.create(this.serviceExecuted).subscribe(
       (result) => {
-        console.log(result);
+        this.serviceExecutedService.showMessage('Serviço criado com sucesso');
         this.serviceExecuted = {
           _id: '',
           idCompanys: localStorage.getItem('idCompany') || '',
@@ -244,7 +260,7 @@ export class ServiceExecutedCreateComponent {
         };
         this.client = {
           name: '',
-          idCompany: localStorage.getItem('idCompany') || '',
+          idCompanys: localStorage.getItem('idCompany') || '',
         };
         this.selectedServicos = [];
         this.reloadService.reloadParent();

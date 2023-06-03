@@ -20,7 +20,7 @@ export class ClientFormComponent {
   client: Client = {
     name: '',
     phone: '',
-    idCompany: localStorage.getItem('idCompany') as string,
+    idCompanys: localStorage.getItem('idCompany') as string,
   };
 
   cepControl = new FormControl();
@@ -52,20 +52,32 @@ export class ClientFormComponent {
     if (!this.clientService.isEdit && !this.clientService.isDelete) {
       if (this.logradouro !== '') {
         this.client.address = `${this.logradouro}, ${this.bairro}, ${this.numero}, ${this.cep}, ${this.city}`;
-        console.log(this.client.address);
       }
       if (this.client.phone !== '') {
         this.client.phone = this.clientService.formatPhoneNumber(
           this.client.phone as string
         );
       }
-      this.clientService.create(this.client).subscribe((client) => {
-        this.clientService.showMessage(
-          `Cliente: ${client.name} criada com sucesso!`
-        );
-        this.reloadService.reloadParent();
-      });
+      this.clientService.create(this.client).subscribe(
+        (client) => {
+          this.clientService.showMessage(
+            `Cliente: ${client.name} criada com sucesso!`
+          );
+          this.reloadService.reloadParent();
+        },
+        (error) => {
+          this.clientService.showMessage(error.error.message);
+        }
+      );
     } else if (this.clientService.isEdit && !this.clientService.isDelete) {
+      if (this.client.phone !== '') {
+        this.client.phone = this.clientService.unformatPhoneNumber(
+          this.client.phone as string
+        );
+        this.client.phone = this.clientService.formatPhoneNumber(
+          this.client.phone as string
+        );
+      }
       this.clientService.update(this.client).subscribe((client) => {
         this.clientService.showMessage(`Cliente alterado com sucesso!`);
         this.reloadService.reloadParent();
@@ -93,6 +105,7 @@ export class ClientFormComponent {
       debit: 0,
       pg: '',
       esqd: '',
+      idCompanys: localStorage.getItem('idCompany') as string,
     };
     this.reloadService.reloadParent();
   }

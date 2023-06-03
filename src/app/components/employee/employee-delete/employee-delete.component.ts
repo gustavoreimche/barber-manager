@@ -33,8 +33,8 @@ export class EmployeeDeleteComponent {
   }
 
   delete(): void {
-    this.userService.delete(this.user._id as string).subscribe((employee) => {
-      this.userService.showMessage('Empresa excluida!');
+    this.userService.delete(this.user.id as string).subscribe((employee) => {
+      this.userService.showMessage('Funcionário excluido!');
     });
     this.router.navigate(['/employee']);
   }

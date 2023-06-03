@@ -2,15 +2,15 @@
   display: none !important; /* Remove a seta do mat-select */
 }
 
-::ng-deep .table-card .row .mat-mdc-form-field {
+::ng-deep .table-card .row-arrows .mat-mdc-form-field {
   text-align: center !important; /* Centraliza o conteúdo */
 }
 
-::ng-deep .table-card .row .mat-mdc-form-field-subscript-wrapper {
+::ng-deep .table-card .row-arrows .mat-mdc-form-field-subscript-wrapper {
   display: none;
 }
 
-::ng-deep .table-card .row .mdc-line-ripple::before,
+::ng-deep .table-card .row-arrows .mdc-line-ripple::before,
 .mdc-line-ripple::after {
   border-bottom-style: unset !important;
 }
@@ -32,11 +32,11 @@
 }
 
 .text-green {
-  color: rgb(19, 110, 19);
+  color: rgb(18, 150, 18);
 }
 
 .text-red {
-  color: #8a0000;
+  color: #ff0000;
 }
 
 .month {
@@ -54,7 +54,7 @@ div.center {
   border-radius: 5px;
   display: flex;
   padding: 5px 20px;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   box-shadow: 0 3px 5px #222222;
   background-color: #474747;
@@ -75,11 +75,11 @@ div.center {
 }
 
 .green {
-  color: rgb(19, 110, 19);
+  color: rgb(18, 150, 18);
 }
 
 .red {
-  color: #8a0000;
+  color: #ff0000;
 }
 
 .yellow {

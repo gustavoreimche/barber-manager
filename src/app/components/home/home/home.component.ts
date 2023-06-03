@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private reloadNavService: ReloadNavService,
-    private reloadService: ReloadService
+    private reloadService: ReloadService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,19 +43,17 @@ export class HomeComponent implements OnInit {
     // this.companies.sort();
 
     this.companyService.load().subscribe((companies) => {
-      console.log('Loaded companies:', companies);
       this.companies = companies;
     });
   }
 
   switchCompany(id: string): void {
-    console.log(id);
     this.companyService.getById(id).subscribe((company) => {
       this.selectedCompany = company;
-      console.log(this.selectedCompany);
     });
     localStorage.setItem('idCompany', id);
     this.reloadNavService.update();
     this.reloadService.reloadParent();
+    this.router.navigate(['/']);
   }
 }

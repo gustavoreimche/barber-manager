@@ -1,8 +1,10 @@
+import { ServiceExecuted } from './../../service-executed/serviceExecuted.model';
 import { Component, OnInit } from '@angular/core';
 import { Servico } from '../../servicos/servico.model';
 import { ServicoService } from '../../servicos/servico.service';
 import { BalanceService } from '../balance.service';
 import { ReloadService } from 'src/app/services/reload.service';
+import { ServiceExecutedService } from '../../service-executed/service-executed.service';
 
 @Component({
   selector: 'app-balance',
@@ -29,23 +31,54 @@ export class BalanceComponent implements OnInit {
 
   constructor(
     public balanceService: BalanceService,
-    private reloadService: ReloadService
+    private reloadService: ReloadService,
+    private serviceExecutedService: ServiceExecutedService
   ) {}
 
-  ngOnInit(): void {}
+  sericesExecuteds: ServiceExecuted[] =
+    this.balanceService.servicesExecuteds.filter((serviceExecuted) => {
+      const paymentDate = new Date(serviceExecuted.paymentDate);
+      return paymentDate.getMonth() === this.balanceService.actualMonth;
+    });
+
+  ngOnInit(): void {
+    this.reloadService.reloadParent$.subscribe(() => {
+      this.filterServicos();
+    });
+
+    this.serviceExecutedService.load().subscribe((servicesExecuteds) => {
+      this.sericesExecuteds = servicesExecuteds.filter((serviceExecuted) => {
+        const paymentDate = new Date(serviceExecuted.paymentDate);
+        return (
+          paymentDate.getMonth() === this.balanceService.actualMonth &&
+          serviceExecuted.paymentMethod !== 'Installments'
+        );
+      });
+    });
+  }
+
+  filterServicos() {
+    this.sericesExecuteds = this.balanceService.servicesExecuteds.filter(
+      (serviceExecuted) => {
+        const paymentDate = new Date(serviceExecuted.paymentDate);
+        return (
+          paymentDate.getMonth() === this.balanceService.actualMonth &&
+          serviceExecuted.paymentMethod !== 'Installments'
+        );
+      }
+    );
+  }
 
   getTotalEntradas(): number {
-    return 300;
-    //TODO Calcular o valor da entrada com base da tabela ServiceExecuted
+    return this.sericesExecuteds.reduce((acumulator, serviceExecuted) => {
+      return acumulator + serviceExecuted.value;
+    }, 0);
   }
 
   getTotalDespesas(): number {
-    let total = 0;
-    this.balanceService.costs.forEach((cost) => {
-      total += cost.value;
-    });
-
-    return total;
+    return this.balanceService.costs.reduce((acumulator, cost) => {
+      return acumulator + cost.value;
+    }, 0);
   }
 
   getTotal(): number {
@@ -62,7 +95,7 @@ export class BalanceComponent implements OnInit {
     } else {
       this.balanceService.actualMonth = this.balanceService.actualMonth - 1;
     }
-    this.reload();
+    this.reloadService.reloadParent();
   }
 
   next(): void {
@@ -71,6 +104,6 @@ export class BalanceComponent implements OnInit {
     } else {
       this.balanceService.actualMonth = this.balanceService.actualMonth + 1;
     }
-    this.reload();
+    this.reloadService.reloadParent();
   }
 }

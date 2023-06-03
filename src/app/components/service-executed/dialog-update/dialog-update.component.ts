@@ -4,6 +4,7 @@ import { DialogData } from '../service-executed-read/service-executed-read.compo
 import { ServiceExecutedCreate } from '../serviceExecutedCreate.model';
 import { ServiceExecutedService } from '../service-executed.service';
 import { ReloadService } from 'src/app/services/reload.service';
+import { ServiceExecuted } from '../serviceExecuted.model';
 
 @Component({
   selector: 'app-dialog-update',
@@ -36,10 +37,14 @@ export class DialogUpdateComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogUpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public serviceExecuted: ServiceExecutedCreate,
+    @Inject(MAT_DIALOG_DATA) public serviceExecuted: ServiceExecuted,
     private serviceExecutedService: ServiceExecutedService,
     private reloadService: ReloadService
   ) {}
+
+  ngOnInit(): void {
+    this.serviceExecuted.paymentDate = new Date();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -49,7 +54,6 @@ export class DialogUpdateComponent {
     this.serviceExecutedService
       .updateById(this.serviceExecuted)
       .subscribe(() => {
-        console.log(this.serviceExecuted);
         this.dialogRef.close();
         this.reloadService.reloadParent();
       });
