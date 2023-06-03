@@ -6,6 +6,8 @@ import { ReloadService } from 'src/app/services/reload.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-client-read',
@@ -47,7 +49,40 @@ export class ClientReadComponent implements OnInit {
     this.isLoading = false;
   }
 
+  gerarExcel(): void {
+    const filteredData: Client[] = this.clients.filter(
+      (item) => (item.debit as number) > 0
+    );
+
+    // Verificar se existem objetos para adicionar ao Excel
+    if (filteredData.length > 0) {
+      // Cria uma planilha do Excel
+      const workbook = XLSX.utils.book_new();
+
+      // Cria uma planilha dentro do arquivo Excel
+      const worksheet = XLSX.utils.json_to_sheet(filteredData, {});
+
+      // Adiciona a planilha ao arquivo Excel
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Clientes');
+
+      // Converte o arquivo Excel para um array de bytes
+      const excelBytes = XLSX.write(workbook, {
+        type: 'array',
+        bookType: 'xlsx',
+      });
+
+      // Salva o arquivo Excel
+      const excelBlob = new Blob([excelBytes], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      saveAs(excelBlob, 'clientes.xlsx');
+    } else {
+      console.log('Nenhum objeto com débito maior que 0 encontrado.');
+    }
+  }
+
   async gerarPdf(): Promise<void> {
+    this.gerarExcel();
     const filteredData: Client[] = this.clients.filter(
       (item) => (item.debit as number) > 0
     );
@@ -62,23 +97,49 @@ export class ClientReadComponent implements OnInit {
 
       // Define a fonte padrão (Helvetica)
       const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+      const fontTitle = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
       // Define o tamanho do texto e a cor
       const textSize = 12;
       const textColor = rgb(0, 0, 0);
+      const columnWidths = [70, 120, 100, 70];
 
       // Define as coordenadas de início para o texto
       let x = 50;
       let y = page.getHeight() - 50;
 
       // Adiciona os títulos das colunas
-      page.drawText('PG', { x, y, size: textSize, font, color: textColor });
-      x += 100;
-      page.drawText('Nome', { x, y, size: textSize, font, color: textColor });
-      x += 100;
-      page.drawText('Esqd', { x, y, size: textSize, font, color: textColor });
-      x += 100;
-      page.drawText('Débito', { x, y, size: textSize, font, color: textColor });
+      page.drawText('PG', {
+        x,
+        y,
+        size: textSize,
+        font: fontTitle,
+        color: textColor,
+      });
+      x += columnWidths[0];
+      page.drawText('Nome', {
+        x,
+        y,
+        size: textSize,
+        font: fontTitle,
+        color: textColor,
+      });
+      x += columnWidths[1];
+      page.drawText('Esqd', {
+        x,
+        y,
+        size: textSize,
+        font: fontTitle,
+        color: textColor,
+      });
+      x += columnWidths[2];
+      page.drawText('Débito', {
+        x,
+        y,
+        size: textSize,
+        font: fontTitle,
+        color: textColor,
+      });
 
       // Atualiza a posição y para a próxima linha
       y -= 20;
@@ -93,7 +154,7 @@ export class ClientReadComponent implements OnInit {
           font,
           color: textColor,
         });
-        x += 100;
+        x += columnWidths[0];
         page.drawText(item.name || '', {
           x,
           y,
@@ -101,7 +162,7 @@ export class ClientReadComponent implements OnInit {
           font,
           color: textColor,
         });
-        x += 100;
+        x += columnWidths[1];
         page.drawText(item.esqd || '', {
           x,
           y,
@@ -109,7 +170,7 @@ export class ClientReadComponent implements OnInit {
           font,
           color: textColor,
         });
-        x += 100;
+        x += columnWidths[2];
         page.drawText(
           item.debit
             ? `R$ ${item.debit.toFixed(2).toString().replace('.', ',')}`
