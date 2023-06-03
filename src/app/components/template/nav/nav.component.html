@@ -74,7 +74,7 @@
         <span class="text">RELATÓRIOS</span>
       </a>
       <mat-nav-list class="nav-list-subitem" *ngIf="this.isSubitemOpen">
-        <a mat-list-item routerLink="/" (click)="this.closeNavSide()">Cliente</a>
+        <a mat-list-item routerLink="/reporting/clients" (click)="this.closeNavSide()">Cliente</a>
         <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Funcionário</a>
         <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Serviço</a>
         <a mat-list-item routerLink="/" (click)="this.closeNavSide()" *ngIf="isAdmin">Completo</a>
