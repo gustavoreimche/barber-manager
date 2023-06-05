@@ -26,7 +26,7 @@ export class AuthService {
             localStorage.setItem('idUser', data.user.id as string);
             localStorage.setItem('isAdmin', data.user.admin as string);
             // localStorage.setItem('isMilitary', data.user.military as string);
-            localStorage.setItem('isMilitary', 'trux e');
+            localStorage.setItem('isMilitary', 'true');
             return true;
           }
           return false;
