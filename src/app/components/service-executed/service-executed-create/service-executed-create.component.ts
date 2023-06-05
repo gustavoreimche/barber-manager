@@ -240,7 +240,7 @@ export class ServiceExecutedCreateComponent {
   cancel(): void {}
 
   salvar(event: Event): void {
-    // event.preventDefault();
+    event.preventDefault();
     this.serviceExecuted.idClients = this.client._id;
     this.selectedServicos.map((servico) => {
       this.serviceExecuted.idServices?.push(servico._id as string);
