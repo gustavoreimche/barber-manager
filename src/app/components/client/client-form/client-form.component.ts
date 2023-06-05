@@ -23,6 +23,7 @@ export class ClientFormComponent {
     idCompanys: localStorage.getItem('idCompany') as string,
   };
 
+  
   cepControl = new FormControl();
   cep: string = '';
   logradouro: string = '';

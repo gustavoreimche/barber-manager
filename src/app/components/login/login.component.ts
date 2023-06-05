@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
           this.userService.showMessage(`Welcome`);
           this.reloadNavService.update();
           this.router.navigateByUrl('/selectcompany');
+        } else {
+          this.userService.showMessage(`Email ou senha incorretos.`);
         }
       });
   }

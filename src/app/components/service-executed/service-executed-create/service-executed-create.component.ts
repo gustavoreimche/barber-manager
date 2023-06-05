@@ -21,7 +21,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./service-executed-create.component.scss'],
 })
 export class ServiceExecutedCreateComponent {
-  isMilitary = true;
+  isMilitary = localStorage.getItem('isMilitary') === 'true';
+  checkBoxShow = localStorage.getItem('isMilitary') === 'true';
   serviceExecuted: ServiceExecutedCreate = {
     _id: '',
     idCompanys: localStorage.getItem('idCompany') || '',

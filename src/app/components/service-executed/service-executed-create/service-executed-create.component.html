@@ -1,7 +1,7 @@
 <form class="example-form" ngNoForm>
   <mat-card class="card">
 
-    <mat-checkbox class="example-margin" [(ngModel)]="isMilitary">Miltar</mat-checkbox>
+    <mat-checkbox *ngIf="checkBoxShow" class="example-margin" [(ngModel)]="isMilitary">Miltar</mat-checkbox>
 
     <div class="nome-container">
 

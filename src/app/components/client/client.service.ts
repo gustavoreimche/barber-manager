@@ -30,7 +30,7 @@ export class ClientService {
 
   isEdit = false;
   isDelete = false;
-  isMilitary = true;
+  isMilitary = localStorage.getItem('isMilitary') === 'true';
 
   squad = ['1º Esqd', '2º Esqd', '3º Esqd', 'Esqd C Ap', 'EM'];
   pg = [
