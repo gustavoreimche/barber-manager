@@ -77,7 +77,7 @@ export class BalanceComponent implements OnInit {
 
   getTotalDespesas(): number {
     return this.balanceService.costs.reduce((acumulator, cost) => {
-      return acumulator + cost.value;
+      return acumulator + cost.value!!;
     }, 0);
   }
 

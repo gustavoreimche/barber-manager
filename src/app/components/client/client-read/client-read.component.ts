@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-client-read',
@@ -22,6 +23,7 @@ export class ClientReadComponent implements OnInit {
   dataSource!: MatTableDataSource<Client>;
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private clientService: ClientService,
@@ -35,6 +37,7 @@ export class ClientReadComponent implements OnInit {
       this.clients = clients;
       this.dataSource = new MatTableDataSource(clients);
       this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
     });
 
     this.reloadService.reloadParent$.subscribe(() => {

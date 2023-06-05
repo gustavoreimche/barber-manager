@@ -18,7 +18,7 @@ export class CostCreateComponent {
   cost: Cost = {
     _id: '',
     idCompany: '',
-    value: 0,
+    value: null,
     description: '',
     costDate: new Date(),
   };
